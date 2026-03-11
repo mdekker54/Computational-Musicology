@@ -1,0 +1,205 @@
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+title: "Portfolio"
+author: "Merijn Dekker"
+format:
+  dashboard:
+    orientation: columns
+---
+
+```{r imports}
+library(plotly)
+library(tidyverse)
+library(compmus)
+```
+
+
+
+# Welcome to my main portfolio page.
+
+## Column
+
+
+### Row {height=20%}
+::: {.card}
+This is the main page. 
+
+:::
+
+### Row {height=80%}
+
+::: {.card title="R Markdown"}
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+
+Note that if you're using the preamble that I used, there is no **Knit** button, but rather a **Render** button. This generates a local preview of your webpage in your browser. A local preview means that what you see is not yet pushed to the internet. You need to commit and push your changes to Github for other people to see the changes.
+
+
+:::
+
+
+
+## Column
+### Row {height=20%}
+
+::: {.card title="How to create a dashboard"}
+
+This column explains how to create a dashboard. Go through the tabs to see specific information.
+
+:::
+
+### Row {.tabset}
+
+::: {.card title="Rows/Columns"}
+Using a single hashtag creates a tab in the navbar. 
+
+Using double hashtags creates a new column. Using triple hashtags creates a new row. You can specify the width or the height of a row/column like so: 
+
+`### Row {height=80%}`
+
+
+***
+
+If you specify the width or height of one card in a column or row but not the other(s), the remaining card(s) will fill up the remaining space. If you do not specify a width or height for any row or column, they will fill the available space evenly.
+
+***
+
+
+The most useful way to section off parts of your page is through the use of this notation:
+
+`::: {.card title="Title"}` 
+
+`[content]`
+
+`:::` 
+
+
+This keeps everything within this "section" in one card. 
+
+:::
+
+
+
+::: {.card title="Dividing text"}
+
+This is the top part of a piece of text in a card. I've included a division bar through the use of: 
+
+`***`
+
+***
+
+The three asterisks create a division between a section of text within one column.
+
+:::
+
+
+
+::: {.card title="Tabs"}
+
+To make tabs, use the following code:
+
+`### Row {.tabset}`
+
+Then, you can use cards within that row for each separate tab:
+
+`::: {.card title="Tab 1"}` 
+
+`[content of tab 1]`
+
+`:::` 
+
+
+`::: {.card title="Tab 2"}` 
+
+`[content of tab 2]`
+
+`:::`
+
+And so on.
+
+:::
+
+
+
+::: {.card title="Plots"}
+You can add plots by inserting a code chunk with regular R code to create a plot:
+
+```{r example, echo=FALSE}
+
+```
+
+
+` ```{r title of code block, echo=FALSE}`
+
+`[code here]`
+
+``<- this accent grave is used to signify the end of the codeblock`
+
+Example plots are shown in the column to the right. Note that the `echo = FALSE` parameter is added to the code chunk to prevent printing of the R code that generated the plot on the dashboard.
+
+:::
+
+
+
+## Column
+
+### Row {.tabset}
+
+::: {.card title="Example plot"}
+
+Here is an example plot. Note that the `echo = FALSE` parameter is added, as we do not see the R code printed in the dashboard.
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+
+:::
+
+::: {.card title="Week 8"}
+
+Here is a plot from the lab of week 8. It shows the chromagram for the "wood" dataset that we could download from the lab notes. Note that the `echo = FALSE` parameter must not be added to the code chunk, as we *do* see the R code printed in the dashboard. 
+
+***
+
+```{r week 8}
+elkchroma <- read_csv("./dat/Elkchroma.csv")
+
+elkchroma |>
+  compmus_wrangle_chroma() |> 
+  mutate(pitches = map(pitches, compmus_normalise, "euclidean")) |>
+  compmus_gather_chroma() |> 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c()
+```
+
+:::
+
+
+# This is another page tab
+
+::: {.card title="Second page tab"}
+This is the content of the second page.
+:::
