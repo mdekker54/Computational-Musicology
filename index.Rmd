@@ -15,63 +15,188 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ---
-title: "Portfolio"
+title: "Computational Musicology"
 author: "Merijn Dekker"
-theme: minty
 format:
   dashboard:
     orientation: columns
+    theme: quartz
+    scrolling: true
 ---
 
 
+# Corpus
 
+## Column {width=55%}
 
-
-# Introduction page
-
-## Column
-
-
-### Row {height=20%}
+### Row {height=25%}
 ::: {.card}
-This is the main page of my portfolio. 
+
+This page will be used to analyze the discography of rock band *All Them Witches*. 
+
+The selection of songs that are used during this course consists of all songs from the six studio albums. 
 
 :::
 
-### Row {height=80%}
+### Row {height=65%}
 
-::: {.card title="work in progress"}
-.
+::: {.card title="Band formation"}
 
-:::
-
-
-
-## Column
-### Row {height=20%}
-
-::: {.card title="work in progress"}
-
+In 2011, Robby Staebler, a professional drummer moved to Nashville to play in band. He left the band due to disagreements between him and fellow band members. He wrote and produced an eight-track demo album and started to look for musicians to form his own band. As of 2012, Staebler met guitarist Ben McLeod, keyboardist Allan Van Cleave and bassist/frontman Charles Michael Parks Jr., starting the journey of All Them Witches. The same year their first EP and then full album were released, leading to the collaboration with label Elektrohasch Schallplatten, rereleasing their first full album called Our Mother Electricity in 2013. In 2013 the band self-released their second album called Lightning at the Door. In 2015 the band signed to New West Records, resulting in 4 albums and a rerelease of the second album.
 
 :::
-
-### Row {.tabset}
-
-::: {.card title="work in progress"}
-.
-
-:::
-
-
 
 ## Column
 
-### Row {.tabset}
+![](atwprofilepic.jpg)
 
-::: {.card title="work in progress"}
-.
+
+# Discography
+
+## Column
+
+### Row 
+
+::: {.card title="&#32;"}
+
+![](omecover2.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+_Our Mother Electricity_<br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Heavy/Like a Witch<br>
+2. The Urn<br>
+3. Bloodhounds<br>
+4. Guns<br>
+5. Elk.Blood.Heart<br>
+6. Until It Unwinds<br>
+7. Easy<br>
+8. Family Song For The Leaving<br>
+9. Right Hand<br>
+10.I Can't Even See Myself<br>
+</p>
 
 :::
+
+::: {.card title="&#32;"}
+
+![](latdcover.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+<em>Lightning at the Door</em><br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Funeral for a Great Drunken Bird<br>
+2. When God Comes Back<br>
+3. The Marriage of Coyote Woman<br>
+4. Swallowed by the Sea<br>
+5. Charles William<br>
+6. The Death of Coyote Woman<br>
+7. Romany Dagger<br>
+8. Mountain<br>
+9. Romany Dagger (Remended)<br>
+10. Surface-To-Air Whistle<br>
+</p>
+
+
+:::
+
+::: {.card title="&#32;"}
+
+![](dsmhmcover.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+<em>Dying Surfer Meets His Maker</em><br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Call Me Star<br>
+2. El Centro<br>
+3. Dirt Preachers<br>
+4. This Is Where It Falls Apart<br>
+5. Mellowing<br>
+6. Open Passageways<br>
+7. Instrumental 2 (Welcome to the Caveman Future)<br>
+8. Talisman<br>
+9. Blood and Sand / Milk and Endless Waters<br>
+</p>
+
+:::
+
+### Row
+
+::: {.card title="&#32;"}
+
+![](sttwcover.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+<em>Sleeping Through The War</em><br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Bulls<br>
+2. Don't Bring Me Coffee<br>
+3. Bruce Lee<br>
+4. 3-5-7<br>
+5. Am I Going Up?<br>
+6. Alabaster<br>
+7. Cowboy Kirk<br>
+8. Internet<br>
+</p>
+
+:::
+
+::: {.card title="&#32;"}
+
+![](atwcover.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+<em>ATW</em><br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Fishbelly 86 Onions<br>
+2. Workhorse<br>
+3. 1st vs. 2nd<br>
+4. Half-Tongue<br>
+5. Diamond<br>
+6. Harvest Feast<br>
+7. HJTC<br>
+8. Rob's Dream<br>
+</p>
+
+:::
+
+::: {.card title="&#32;"}
+
+![](naticover.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+<em>Nothing as the Ideal</em><br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Saturnine & Iron Jaw<br>
+2. Enemy of My Enemy<br>
+3. Everest<br>
+4. See You Next Fall<br>
+5. The Children of Coyote Woman<br>
+6. 41<br>
+7. Lights Out<br>
+8. Rats in Ruin<br>
+</p>
+
+:::
+
 
 # Week 11
 
