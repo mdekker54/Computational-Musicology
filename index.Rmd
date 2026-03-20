@@ -3,10 +3,14 @@
 library(plotly)
 library(tidyverse)
 library(compmus)
+library(tidymodels)
+library(ggdendro)
+library(heatmaply)
 ```
 
 ```{r}
 fourtyonedft <- read_csv("./dat/41dft.csv")
+alltracks <- read_csv("./dat/computational_musicology_alltracks.csv") 
 ```
 
 
@@ -24,7 +28,6 @@ format:
     scrolling: true
 ---
 
-
 # Corpus
 
 ## Column {width=55%}
@@ -40,7 +43,7 @@ The selection of songs that are used during this course consists of all songs fr
 
 ### Row {height=65%}
 
-::: {.card title="Band formation"}
+::: {.card title="Band introduction"}
 
 In 2011, Robby Staebler, a professional drummer moved to Nashville to play in band. He left the band due to disagreements between him and fellow band members. He wrote and produced an eight-track demo album and started to look for musicians to form his own band. As of 2012, Staebler met guitarist Ben McLeod, keyboardist Allan Van Cleave and bassist/frontman Charles Michael Parks Jr., starting the journey of All Them Witches. The same year their first EP and then full album were released, leading to the collaboration with label Elektrohasch Schallplatten, rereleasing their first full album called Our Mother Electricity in 2013. In 2013 the band self-released their second album called Lightning at the Door. In 2015 the band signed to New West Records, resulting in 4 albums and a rerelease of the second album.
 
@@ -225,3 +228,81 @@ fourtyonedft |>
   theme_classic()
 ```
 :::
+
+# Week 12
+
+## Column {width=50%}
+
+### Row
+
+::: {card}
+```{r, echo=FALSE}
+alltracks_juice <-
+  recipe(
+    `Track Name` ~
+      Danceability +
+      Energy +
+      Loudness +
+      Speechiness +
+      Acousticness +
+      Instrumentalness +
+      Liveness +
+      Valence +
+      Tempo +
+      `Duration (ms)`,
+    data = alltracks
+  ) |>
+  step_center(all_predictors()) |>
+  step_scale(all_predictors()) |> 
+  prep(alltracks |> mutate(`Track Name` = str_trunc(`Track Name`, 36))) |>
+  juice() |>
+  column_to_rownames("Track Name")
+```
+```{r, echo=FALSE}
+alltracks_dist <- dist(alltracks_juice, method = "euclidean")
+```
+```{r, echo=FALSE}
+alltracks_dist |> 
+  hclust(method = "complete") |> # Try single, average, and complete.
+  dendro_data() |>
+  ggdendrogram()
+```
+:::
+
+::: {card}
+
+```{r, echo=FALSE}
+alltracks2_juice <-
+  recipe(
+    `Track Name` ~
+      Energy +
+      Loudness,
+    data = alltracks
+  ) |>
+  step_center(all_predictors()) |>
+  step_scale(all_predictors()) |> 
+  prep(alltracks |> mutate(`Track Name` = str_trunc(`Track Name`, 36))) |>
+  juice() |>
+  column_to_rownames("Track Name")
+```
+```{r, echo=FALSE}
+alltracks2_dist <- dist(alltracks2_juice, method = "euclidean")
+```
+```{r, echo=FALSE}
+alltracks2_dist |> 
+  hclust(method = "complete") |> # Try single, average, and complete.
+  dendro_data() |>
+  ggdendrogram()
+```
+
+:::
+
+## Column
+
+### Row {height=50%}
+
+The first dendrogram to the left is made up of all songs used in the corpus. All variables as extracted from exportify are used. These are: danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence and tempo. The clusters seem to make sense to some extent. clusters like the 2nd, 3rd, 4th, 5th and 6th track are quite similar in ways. They are all higher energy, mostly distorted sounding tracks. These kind of variables can be clustered even better.
+
+### Row{height=50%}
+
+The second dendrogram is also made up of all songs used in the corpus, but this time only energy and loudness are used. This makes the clusters as seen in the dendrogram to be more specific and therefore more logical to read and it is easier to make conclusions while listening. The interesting part about this dendogram is the fact that all clusters seem to have tracks from different albums, concluding that, with only these dendrograms, there is no reason to believe that the albums differ in energy and loudness level.
