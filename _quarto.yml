@@ -1,5 +1,6 @@
 project:
-  type: website   # this is required for multi-page websites
+  type: website
+  output-dir: docs
 
 website:
   title: "The Sound of All Them Witches - Merijn Dekker"
