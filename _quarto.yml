@@ -27,3 +27,7 @@ website:
 format:
   html:   # website pages use HTML format
     theme: quartz
+execute:
+  echo: false
+  warning: false
+  message: false
