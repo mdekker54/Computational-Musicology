@@ -2,7 +2,7 @@ project:
   type: website   # this is required for multi-page websites
 
 website:
-  title: "The Sound of All Them Witches"
+  title: "The Sound of All Them Witches - Merijn Dekker"
   navbar:
     right:
       - text: Home
