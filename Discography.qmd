@@ -1,0 +1,166 @@
+```{r imports}
+library(plotly)
+library(tidyverse)
+library(compmus)
+library(tidymodels)
+library(ggdendro)
+library(heatmaply)
+```
+
+
+
+---
+title: "Discography"
+output: html_document
+date: "2026-03-26"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Discography
+
+## Column
+
+### Row 
+
+::: {.card title="&#32;"}
+
+![](omecover2.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+_Our Mother Electricity_<br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Heavy/Like a Witch<br>
+2. The Urn<br>
+3. Bloodhounds<br>
+4. Guns<br>
+5. Elk.Blood.Heart<br>
+6. Until It Unwinds<br>
+7. Easy<br>
+8. Family Song For The Leaving<br>
+9. Right Hand<br>
+10.I Can't Even See Myself<br>
+</p>
+
+:::
+
+::: {.card title="&#32;"}
+
+![](latdcover.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+<em>Lightning At The Door</em><br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Funeral for a Great Drunken Bird<br>
+2. When God Comes Back<br>
+3. The Marriage of Coyote Woman<br>
+4. Swallowed by the Sea<br>
+5. Charles William<br>
+6. The Death of Coyote Woman<br>
+7. Romany Dagger<br>
+8. Mountain<br>
+9. Romany Dagger (Remended)<br>
+10.Surface-To-Air Whistle<br>
+</p>
+
+
+:::
+
+::: {.card title="&#32;"}
+
+![](dsmhmcover.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+<em>Dying Surfer Meets His Maker</em><br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Call Me Star<br>
+2. El Centro<br>
+3. Dirt Preachers<br>
+4. This Is Where It Falls Apart<br>
+5. Mellowing<br>
+6. Open Passageways<br>
+7. Instrumental 2 (Welcome to the Caveman Future)<br>
+8. Talisman<br>
+9. Blood and Sand / Milk and Endless Waters<br>
+</p>
+
+:::
+
+### Row
+
+::: {.card title="&#32;"}
+
+![](sttwcover.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+<em>Sleeping Through The War</em><br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Bulls<br>
+2. Don't Bring Me Coffee<br>
+3. Bruce Lee<br>
+4. 3-5-7<br>
+5. Am I Going Up?<br>
+6. Alabaster<br>
+7. Cowboy Kirk<br>
+8. Internet<br>
+</p>
+
+:::
+
+::: {.card title="&#32;"}
+
+![](atwcover.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+<em>ATW</em><br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Fishbelly 86 Onions<br>
+2. Workhorse<br>
+3. 1st vs. 2nd<br>
+4. Half-Tongue<br>
+5. Diamond<br>
+6. Harvest Feast<br>
+7. HJTC<br>
+8. Rob's Dream<br>
+</p>
+
+:::
+
+::: {.card title="&#32;"}
+
+![](naticover.jpg)
+
+<p style="font-family:Computer Modern; font-size:20px;">
+<em>Nothing as the Ideal</em><br>
+</p>
+
+<p style="font-family:Computer Modern; font-size:15px;">
+Song list:<br>
+1. Saturnine & Iron Jaw<br>
+2. Enemy of My Enemy<br>
+3. Everest<br>
+4. See You Next Fall<br>
+5. The Children of Coyote Woman<br>
+6. 41<br>
+7. Lights Out<br>
+8. Rats in Ruin<br>
+</p>
+
+:::

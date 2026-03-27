@@ -1,0 +1,29 @@
+project:
+  type: website   # this is required for multi-page websites
+
+website:
+  title: "The Sound of All Them Witches"
+  navbar:
+    right:
+      - text: Home
+        href: index.qmd
+      - text: Album Analysis
+        menu:
+          - text: "Our Mother Electricity"
+            href: OME.qmd
+          - text: "Lightning At The Door"
+            href: LATD.qmd
+          - text: "Dying Surfer Meets His Maker"
+            href: DSMHM.qmd
+          - text: "Sleeping Through The War"
+            href: STTW.qmd
+          - text: "ATW"
+            href: ATW.qmd
+          - text: "Nothing as the Ideal"
+            href: NATI.qmd
+      - text: Cross-Album Analysis
+        href: caanalysis.qmd
+
+format:
+  html:   # website pages use HTML format
+    theme: quartz

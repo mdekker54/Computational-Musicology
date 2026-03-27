@@ -1,3 +1,10 @@
+---
+format:
+  dashboard:
+    orientation: columns
+    theme: quartz
+    scrolling: true
+---
 
 ```{r imports}
 library(plotly)
@@ -13,46 +20,50 @@ fourtyonedft <- read_csv("./dat/41dft.csv")
 alltracks <- read_csv("./dat/computational_musicology_alltracks.csv") 
 ```
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
----
-title: "Computational Musicology"
-author: "Merijn Dekker"
-format:
-  dashboard:
-    orientation: columns
-    theme: quartz
-    scrolling: true
----
+# Introduction {#Introduction}
 
-# Corpus
 
 ## Column {width=55%}
 
 ### Row {height=25%}
 ::: {.card}
 
-This page will be used to analyze the discography of rock band *All Them Witches*. 
+<div style="font-family:nunito; font-size:15px !important;">
+Explore the sonic world of *All Them Witches* through a full analysis of their six studio albums. This project explores the evolution of the band's sound, from their early blues-inspired rock tracks, to more complex, psychedelic compositions.
+</div>
 
-The selection of songs that are used during this course consists of all songs from the six studio albums. 
+:::
+
+
+### Row {height=65% .tabset}
+
+::: {.card title="History"}
+
+<div style="font-family:nunito; font-size:15px !important;">
+*All Them Witches* formed in 2012 in Nashville when drummer Robby Staebler recruited guitarist Ben McLeod, keyboardist Allan Van Cleave, and bassist/vocalist Charles Michael Parks Jr. That year, they self-released their first EP and debut album, *Our Mother Electricity*, which was later reissued by the German label Elektrohasch Records. In 2013, they self-released their second album, *Lightning at the Door*, before signing with New West Records in 2015. Under New West, the band released four albums, along with reissues of earlier albums.
+
+Over the years, the band has seen minor lineup changes, including keyboardist Allan Van Cleave’s brief departure and eventual return. They have toured extensively across North America and Europe, steadily building their catalog and professional profile. Through independent releases, label partnerships, and consistent touring, All Them Witches have maintained an active presence in the modern rock scene since their formation.
+</div>
 
 :::
 
-### Row {height=65%}
+::: {.card title="Style"}
 
-::: {.card title="Band introduction"}
-
-In 2011, Robby Staebler, a professional drummer moved to Nashville to play in band. He left the band due to disagreements between him and fellow band members. He wrote and produced an eight-track demo album and started to look for musicians to form his own band. As of 2012, Staebler met guitarist Ben McLeod, keyboardist Allan Van Cleave and bassist/frontman Charles Michael Parks Jr., starting the journey of All Them Witches. The same year their first EP and then full album were released, leading to the collaboration with label Elektrohasch Schallplatten, rereleasing their first full album called Our Mother Electricity in 2013. In 2013 the band self-released their second album called Lightning at the Door. In 2015 the band signed to New West Records, resulting in 4 albums and a rerelease of the second album.
+<div style="font-family:nunito; font-size:15px !important;">
+*All Them Witches* blend psychedelic rock, blues, and stoner elements with hypnotic, atmospheric textures. Their music shifts seamlessly between fuzz-heavy, driving riffs and more mellow, acoustic passages, creating a dynamic and immersive sound. Recurring motifs, haunting melodies, and layered arrangements give the band a distinctive sonic identity that evolves across their discography.
+</div>
 
 :::
+
+
 
 ## Column
 
 ![](atwprofilepic.jpg)
-
 
 # Discography
 
@@ -89,7 +100,7 @@ Song list:<br>
 ![](latdcover.jpg)
 
 <p style="font-family:Computer Modern; font-size:20px;">
-<em>Lightning at the Door</em><br>
+<em>Lightning At The Door</em><br>
 </p>
 
 <p style="font-family:Computer Modern; font-size:15px;">
@@ -103,7 +114,7 @@ Song list:<br>
 7. Romany Dagger<br>
 8. Mountain<br>
 9. Romany Dagger (Remended)<br>
-10. Surface-To-Air Whistle<br>
+10.Surface-To-Air Whistle<br>
 </p>
 
 
@@ -199,11 +210,7 @@ Song list:<br>
 </p>
 
 :::
-
-
-# Week 11
-
-## Column
+# homework 
 
 ### Row {height=100%}
 
@@ -229,7 +236,8 @@ fourtyonedft |>
 ```
 :::
 
-# Week 12
+
+
 
 ## Column {width=50%}
 
