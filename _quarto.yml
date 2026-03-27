@@ -24,10 +24,12 @@ website:
       - text: Cross-Album Analysis
         href: caanalysis.qmd
 
-format:
-  html:   # website pages use HTML format
-    theme: quartz
 execute:
   echo: false
   warning: false
   message: false
+
+format:
+  html:
+    code-fold: false
+    theme: quartz
