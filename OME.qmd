@@ -1,4 +1,4 @@
-```{r imports, echo=FALSE}
+```{r imports}
 library(plotly)
 library(tidyverse)
 library(compmus)
