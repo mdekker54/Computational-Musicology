@@ -10,6 +10,7 @@ library(heatmaply)
 
 ---
 title: "Sleeping Through The War"
+sidebar: sttw
 format:
   html:
     theme: quartz

@@ -10,6 +10,7 @@ library(heatmaply)
 
 ---
 title: "Dying Surfer Meets His Maker"
+sidebar: dsmhm
 format:
   html:
     theme: quartz

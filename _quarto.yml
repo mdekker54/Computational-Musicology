@@ -1,9 +1,107 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - Images/omecover2.jpg
 
 website:
   title: "The Sound of All Them Witches - Merijn Dekker"
+  sidebar:
+    - id: ome
+      background: "none"
+      title: "Our Mother Electricity"
+      header: |
+        ![](images/omecover2.jpg){width=200}
+        
+        ***Our Mother Electricity*** <br>
+        1.  &nbsp;&ensp;Heavy/Like a Witch <br>
+        2.  &nbsp;&ensp;The Urn <br>
+        3.  &nbsp;&ensp;Bloodhounds <br>
+        4.  &nbsp;&ensp;Guns <br>
+        5.  &nbsp;&ensp;Elk.Blood.Heart <br>
+        6.  &nbsp;&ensp;Until It Unwinds <br>
+        7.  &nbsp;&ensp;Easy <br>
+        8.  &nbsp;&ensp;Family Song for the Leaving <br>
+        9.  &nbsp;&ensp;Right Hand <br>
+        10. &nbsp;I Can't Even See Myself
+    - id: latd
+      background: "none"
+      title: "Lightning At The Door"
+      header: |
+        ![](images/latdcover.jpg){width=200}
+        
+        ***Lightning At The Door*** <br>
+        1.  &nbsp;&ensp;Funeral For A Great Drunken Bird <br>
+        2.  &nbsp;&ensp;When God Comes Back <br>
+        3.  &nbsp;&ensp;The Marriage Of Coyote Woman <br>
+        4.  &nbsp;&ensp;Swallowed By The Sea <br>
+        5.  &nbsp;&ensp;Charles William <br>
+        6.  &nbsp;&ensp;The Death Of Coyote Woman <br>
+        7.  &nbsp;&ensp;Romany Dagger <br>
+        8.  &nbsp;&ensp;Mountain <br>
+        9.  &nbsp;&ensp;Romany Dagger(Remended) <br>
+        10. &nbsp;Surface-To-Air-Whistle
+    - id: dsmhm
+      background: "none"
+      title: "Dying Surfer Meets His Maker"
+      header: |
+        ![](images/dsmhmcover.jpg){width=200}
+        
+        ***Dying Surfer Meets His Maker*** <br>
+        1.  &nbsp;&ensp;Call Me Star <br>
+        2.  &nbsp;&ensp;El Centro <br>
+        3.  &nbsp;&ensp;Dirt Preachers <br>
+        4.  &nbsp;&ensp;This Is Where It Falls Apart <br>
+        5.  &nbsp;&ensp;Mellowing <br>
+        6.  &nbsp;&ensp;Open Passageways <br>
+        7.  &nbsp;&ensp;Instrumental 2<br>&nbsp;&ensp;&ensp;(Welcome To The Caveman Future) <br>
+        8.  &nbsp;&ensp;Talisman <br>
+        9.  &nbsp;&ensp;Blood And Sand <br> &nbsp;&ensp;&ensp;/Milk And Endless Waters
+    - id: sttw
+      background: "none"
+      title: "Sleeping Through The War"
+      header: |
+        ![](images/sttwcover.jpg){width=200}
+        
+        ***Sleeping Through The War*** <br>
+        1.  &nbsp;&ensp;Bulls <br>
+        2.  &nbsp;&ensp;Don't Bring Me Coffee <br>
+        3.  &nbsp;&ensp;Bruce Lee <br>
+        4.  &nbsp;&ensp;3-5-7 <br>
+        5.  &nbsp;&ensp;Am I Going Up? <br>
+        6.  &nbsp;&ensp;Alabaster <br>
+        7.  &nbsp;&ensp;Cowboy Kirk <br>
+        8.  &nbsp;&ensp;Internet
+    - id: atw
+      background: "none"
+      title: "ATW"
+      header: |
+        ![](images/atwcover.jpg){width=200}
+        
+        ***ATW*** <br>
+        1.  &nbsp;&ensp;Fishbelly 86 Onions <br>
+        2.  &nbsp;&ensp;Workhorse <br>
+        3.  &nbsp;&ensp;1st vs. 2nd <br>
+        4.  &nbsp;&ensp;Half-Tongue <br>
+        5.  &nbsp;&ensp;Diamond <br>
+        6.  &nbsp;&ensp;Harvest Feast <br>
+        7.  &nbsp;&ensp;HJTC <br>
+        8.  &nbsp;&ensp;Rob's Dream
+    - id: nati
+      background: "none"
+      title: "Nothing as the Ideal"
+      header: |
+        ![](images/naticover.jpg){width=200}
+        
+        ***Nothing as the Ideal*** <br>
+        1.  &nbsp;&ensp;Saturnine & Iron Jaw <br>
+        2.  &nbsp;&ensp;Enemy of My Enemy <br>
+        3.  &nbsp;&ensp;Everest <br>
+        4.  &nbsp;&ensp;See You Next Fall <br>
+        5.  &nbsp;&ensp;The Children of Coyote Woman <br>
+        6.  &nbsp;&ensp;41 <br>
+        7.  &nbsp;&ensp;Lights Out <br>
+        8.  &nbsp;&ensp;Rats in Ruin
   navbar:
     right:
       - text: Home
@@ -32,5 +130,30 @@ execute:
 
 format:
   html:
+    include-in-header:
+      text: |
+        <style>
+        #quarto-sidebar {
+          position: fixed !important;
+          /* Keeps the sidebar below the navbar */
+          top: 70px !important;       
+          height: calc(100vh - 70px) !important;
+          
+          /* Border removed: The line is now gone */
+          border-right: none !important; 
+          
+          background-color: transparent !important;
+          overflow-y: auto !important;
+        }
+
+        /* Hide the sidebar's internal scrollbar */
+        #quarto-sidebar::-webkit-scrollbar {
+          display: none;
+        }
+        #quarto-sidebar {
+          scrollbar-width: none;
+        }
+        </style>
+    page-layout: full
     code-fold: false
     theme: quartz

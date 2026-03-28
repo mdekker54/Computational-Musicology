@@ -9,6 +9,7 @@ library(heatmaply)
 
 ---
 title: "Nothing as the Ideal"
+sidebar: nati
 format:
   html:
     theme: quartz

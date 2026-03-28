@@ -10,6 +10,7 @@ library(heatmaply)
 
 ---
 title: "ATW"
+sidebar: atw
 format:
   html:
     theme: quartz

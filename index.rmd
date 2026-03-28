@@ -63,7 +63,7 @@ Over the years, the band has seen minor lineup changes, including keyboardist Al
 
 ## Column
 
-![](atwprofilepic.jpg)
+![](Images/atwprofilepic.jpg)
 
 # Discography
 
@@ -73,7 +73,7 @@ Over the years, the band has seen minor lineup changes, including keyboardist Al
 
 ::: {.card title="&#32;"}
 
-![](omecover2.jpg)
+![](Images/omecover2.jpg)
 
 <p style="font-family:Computer Modern; font-size:20px;">
 _Our Mother Electricity_<br>
@@ -97,7 +97,7 @@ Song list:<br>
 
 ::: {.card title="&#32;"}
 
-![](latdcover.jpg)
+![](Images/latdcover.jpg)
 
 <p style="font-family:Computer Modern; font-size:20px;">
 <em>Lightning At The Door</em><br>
@@ -122,7 +122,7 @@ Song list:<br>
 
 ::: {.card title="&#32;"}
 
-![](dsmhmcover.jpg)
+![](Images/dsmhmcover.jpg)
 
 <p style="font-family:Computer Modern; font-size:20px;">
 <em>Dying Surfer Meets His Maker</em><br>
@@ -147,7 +147,7 @@ Song list:<br>
 
 ::: {.card title="&#32;"}
 
-![](sttwcover.jpg)
+![](Images/sttwcover.jpg)
 
 <p style="font-family:Computer Modern; font-size:20px;">
 <em>Sleeping Through The War</em><br>
@@ -169,7 +169,7 @@ Song list:<br>
 
 ::: {.card title="&#32;"}
 
-![](atwcover.jpg)
+![](Images/atwcover.jpg)
 
 <p style="font-family:Computer Modern; font-size:20px;">
 <em>ATW</em><br>
@@ -191,7 +191,7 @@ Song list:<br>
 
 ::: {.card title="&#32;"}
 
-![](naticover.jpg)
+![](Images/naticover.jpg)
 
 <p style="font-family:Computer Modern; font-size:20px;">
 <em>Nothing as the Ideal</em><br>
