@@ -80,7 +80,7 @@ _Our Mother Electricity_<br>
 </p>
 
 <p style="font-family:Computer Modern; font-size:15px;">
-Song list:<br>
+Track list:<br>
 1. Heavy/Like a Witch<br>
 2. The Urn<br>
 3. Bloodhounds<br>
@@ -104,7 +104,7 @@ Song list:<br>
 </p>
 
 <p style="font-family:Computer Modern; font-size:15px;">
-Song list:<br>
+Track list:<br>
 1. Funeral for a Great Drunken Bird<br>
 2. When God Comes Back<br>
 3. The Marriage of Coyote Woman<br>
@@ -129,7 +129,7 @@ Song list:<br>
 </p>
 
 <p style="font-family:Computer Modern; font-size:15px;">
-Song list:<br>
+Track list:<br>
 1. Call Me Star<br>
 2. El Centro<br>
 3. Dirt Preachers<br>
@@ -154,7 +154,7 @@ Song list:<br>
 </p>
 
 <p style="font-family:Computer Modern; font-size:15px;">
-Song list:<br>
+Track list:<br>
 1. Bulls<br>
 2. Don't Bring Me Coffee<br>
 3. Bruce Lee<br>
@@ -176,7 +176,7 @@ Song list:<br>
 </p>
 
 <p style="font-family:Computer Modern; font-size:15px;">
-Song list:<br>
+Track list:<br>
 1. Fishbelly 86 Onions<br>
 2. Workhorse<br>
 3. 1st vs. 2nd<br>
@@ -198,7 +198,7 @@ Song list:<br>
 </p>
 
 <p style="font-family:Computer Modern; font-size:15px;">
-Song list:<br>
+Track list:<br>
 1. Saturnine & Iron Jaw<br>
 2. Enemy of My Enemy<br>
 3. Everest<br>

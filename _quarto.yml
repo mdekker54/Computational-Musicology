@@ -130,6 +130,8 @@ execute:
 
 format:
   html:
+    fig-format: png
+    fig-transparent: true
     include-in-header:
       text: |
         <style>
