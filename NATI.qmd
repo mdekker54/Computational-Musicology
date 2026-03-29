@@ -19,7 +19,7 @@ format:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Introduction
+## Introduction
 
 Released by New West Records on 4-9-2020 <br>
 Genres according to database MusicBrainz<br>
@@ -32,7 +32,7 @@ Songwriting credits:<br>
 - Robby Staebler - Drums, Synthesizer, Loops and Tapes<br>
 <br>
 
-## Metadata
+### Metadata
 
 ..
 ```{r}
@@ -85,7 +85,7 @@ alltracks %>%
   theme_minimal()
 ```
 
-# Clustering and Classification
+## Clustering and Classification
 
 ```{r}
 nati_juice <-
@@ -119,7 +119,8 @@ nati_dist |>
 ```
 Enemy of My Enemy<br>
 The Children of Coyote Woman
-# Harmony
+
+## Harmony
 
 ```{r}
 enemy <- read_csv("dat/enemy.csv")
@@ -322,14 +323,123 @@ children |>
   labs(x = "Time (s)", y = "")
 ```
 
-# Rhythm and Tempo
+## Rhythm and Tempo
 
+```{r}
+enemytempo <- read_csv("dat/enemytempo.csv")
 
+enemytempo |> 
+  pivot_longer(-TIME, names_to = "tempo") |> 
+  mutate(tempo = as.numeric(tempo)) |> 
+  ggplot(aes(x = TIME, y = tempo, fill = value)) +
+  geom_raster() +
+  scale_y_continuous(transform = c("reciprocal", "reverse"), breaks = seq(50, 350, 100)) +    
+  scale_fill_viridis_c(guide = "none") +
+  labs(x = "Time (s)", y = "Tempo (BPM)") +
+  theme_classic()
+```
 
-# Timbre
+```{r}
+childrentempo <- read_csv("dat/childrentempo.csv")
 
+childrentempo |> 
+  pivot_longer(-TIME, names_to = "tempo") |> 
+  mutate(tempo = as.numeric(tempo)) |> 
+  ggplot(aes(x = TIME, y = tempo, fill = value)) +
+  geom_raster() +
+  scale_y_continuous(transform = c("reciprocal", "reverse"), breaks = seq(50, 350, 100)) +    
+  scale_fill_viridis_c(guide = "none") +
+  labs(x = "Time (s)", y = "Tempo (BPM)") +
+  theme_classic()
+```
 
+## Timbre
 
-# Structure
+```{r}
+enemymel <- read_csv("dat/enemymel.csv")
 
+enemymel |>
+  compmus_wrangle_timbre() |> 
+  mutate(timbre = map(timbre, compmus_normalise, "euclidean")) |>
+  compmus_gather_timbre() |>
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = mfcc,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic()
+```
+
+```{r}
+childrenmel <- read_csv("dat/childrenmel.csv")
+
+childrenmel |>
+  compmus_wrangle_timbre() |> 
+  mutate(timbre = map(timbre, compmus_normalise, "euclidean")) |>
+  compmus_gather_timbre() |>
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = mfcc,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic()
+```
+
+## Structure
+
+```{r}
+enemymel |>
+  compmus_wrangle_timbre() |> 
+  filter(row_number() %% 50L == 0L) |> 
+  mutate(timbre = map(timbre, compmus_normalise, "euclidean")) |>
+  compmus_self_similarity(timbre, "cosine") |> 
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = 50 * xduration,
+      y = ystart + yduration / 2,
+      height = 50 * yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_fixed() +
+  scale_fill_viridis_c(guide = "none") +
+  theme_classic() +
+  labs(x = "", y = "")
+```
+
+```{r}
+childrenmel |>
+  compmus_wrangle_timbre() |> 
+  filter(row_number() %% 50L == 0L) |> 
+  mutate(timbre = map(timbre, compmus_normalise, "euclidean")) |>
+  compmus_self_similarity(timbre, "cosine") |> 
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = 50 * xduration,
+      y = ystart + yduration / 2,
+      height = 50 * yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_fixed() +
+  scale_fill_viridis_c(guide = "none") +
+  theme_classic() +
+  labs(x = "", y = "")
+```
 
