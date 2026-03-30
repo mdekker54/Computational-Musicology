@@ -24,6 +24,16 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Introduction
 
+Each album analysis page has the exact same layout, that is:<br>
+- Album Information<br>
+- Metadata<br>
+- Clustering<br>
+- Harmony<br>
+- Tempo<br>
+- Timbre<br>
+- Structure<br>
+- Conclusion<br><br>
+
 ### Album Information
 
 Self-released on 16-9-2012<br>
@@ -43,7 +53,7 @@ Songwriting credits:<br>
 
 ### Metadata
 
-
+This album features 10 tracks, with an average duration of 4 minutes and 46 seconds. The track list below shows the length of each track in minutes.
 
 ```{r}
 alltracks <- read_csv("computational_musicology_alltracks.csv")
@@ -86,6 +96,9 @@ ggplot(ome_df, aes(x = duration_min, y = forcats::fct_rev(`Track Name`))) +
   theme_minimal() +
   xlim(0, max(ome_df$duration_min) * 1.1)
 ```
+
+The average tempo of this album is 124bpm with a minimum of 76bpm and a maximum of 174bpm. The track list below shows the tempo of each track in bpm.
+
 ```{r}
 alltracks %>%
   filter(`Album Name` == "Our Mother Electricity") %>%
@@ -103,7 +116,10 @@ alltracks %>%
   theme_minimal()
 ```
 
-## Clustering and Classification
+## Clustering
+
+To analyze six albums within the scope of this course, clustering is used to select two representative tracks per album for deeper analysis. A hierarchical clustering tree is shown below, based on the following variables: danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration, and time signature. Popularity is excluded, as it does not reflect the audio characteristics of the tracks. From each of the two primary clusters, the most streamed track is selected.<br><br>
+The resulting clusters reflect distinct musical characteristics. The tracks in cluster one are mellow tracks, containing mostly folky clean and/or acoustic guitars and calm vocals, with subtle percussion. Cluster two, on the other hand, consists mostly of higher energy rock tracks with a mix of clean and distorted sounds and more aggressive sounding vocals and percussion. The most streamed track in cluster one is *Elk.Blood.Heart* and the most streamed track in cluster two is *Heavy/Like a Witch*.
 
 ```{r}
 ome_juice <-
@@ -135,11 +151,10 @@ ome_dist |>
   dendro_data() |>
   ggdendrogram()
 ```
-Elk.Blood.Heart<br>
-Heavy/Like a Witch
-
-
 ## Harmony
+
+Chromagram - *Elk.Blood.Heart*<br><br>
+As seen in the plot below, the most dominant pitch in this track is the D. The A, a fifth of D, is dominant together with D, as expected. The presence of the pitch F is interesting, as this makes the scenario in which the minor mode is used in this track quite probable, as opposed to the F#. At around the 300 seconds mark there is a shift to C# and back to D visible, which is the result of a minor change in the melody and chords of the chorus.
 
 ```{r}
 elk <- read_csv("dat/Elkchroma.csv")
@@ -161,6 +176,10 @@ elk |>
   theme_minimal() +
   scale_fill_viridis_c()
 ```
+
+Chromagram - *Heavy/Like a Witch*<br><br>
+As seen in the plot below, the most dominant pitch in this track is the C, along with the Bb, G and most importantly E, which could suggest a major tonality. The start of the track seems messy, which is the result of a vocal part that sounds quite different compared to the rest of the track. The bright green C part at the last quarter of the track is caused by a chugging guitar riff that is mostly played on C.
+
 ```{r}
 heavy <- read_csv("dat/heavy.csv")
 
@@ -181,6 +200,8 @@ heavy |>
   theme_minimal() +
   scale_fill_viridis_c()
 ```
+Keygram - *Elk.Blood.Heart*<br><br>
+As mentioned earlier, the most dominant pitch of this track is the D. The keygram below shows a blue bar at both the Dmaj and Dmin, though the Dmin seems more evident. The Gmaj and Gmin, the fifth of D, show a blue bar as well. The minor variations in the chorus are not visible in the keygram.
 
 ```{r}
 circshift <- function(v, n) {
@@ -287,6 +308,9 @@ elk |>
   labs(x = "Time (s)", y = "")
 ```
 
+Keygram - *Heavy/Like a Witch*<br><br>
+As mentioned earlier, the most dominant pitch of this track is the C. The keygram below shows a blue bar at both the Cmaj and Cmin, though the Cmaj seems more evident. The vertical gray stripe most likely resembles a silence, which is placed withing the solo vocal intro. The ending riff on C is clearly portrayed, showing bigger differences between the C tonalities and other tonalities as compared to the rest of the track.
+
 ```{r}
 heavy |> 
   compmus_wrangle_chroma() |> 
@@ -304,43 +328,10 @@ heavy |>
   theme_minimal() +
   labs(x = "Time (s)", y = "")
 ```
-```{r}
-elk |> 
-  compmus_wrangle_chroma() |> 
-  filter(row_number() %% 50L == 0L) |> 
-  compmus_match_pitch_template(
-    chord_templates,         # Change to chord_templates if desired
-    method = "euclidean",  # Try different distance metrics
-    norm = "manhattan"     # Try different norms
-  ) |>
-  ggplot(
-    aes(x = start + duration / 2, width = 50 * duration, y = name, fill = d)
-  ) +
-  geom_tile() +
-  scale_fill_viridis_c(guide = "none") +
-  theme_minimal() +
-  labs(x = "Time (s)", y = "")
-```
+## Tempo
 
-```{r}
-heavy |> 
-  compmus_wrangle_chroma() |> 
-  filter(row_number() %% 50L == 0L) |> 
-  compmus_match_pitch_template(
-    chord_templates,         # Change to chord_templates if desired
-    method = "euclidean",  # Try different distance metrics
-    norm = "manhattan"     # Try different norms
-  ) |>
-  ggplot(
-    aes(x = start + duration / 2, width = 50 * duration, y = name, fill = d)
-  ) +
-  geom_tile() +
-  scale_fill_viridis_c(guide = "none") +
-  theme_minimal() +
-  labs(x = "Time (s)", y = "")
-```
-
-## Rhythm and Tempo
+Tempogram - *Elk.Blood.Heart*<br><br>
+The tempogram below shows that the higher energy parts and soft intro of this track are too hard to be tracked, but it is evident that there are tempo fluctuations which makes it probable that this track is recorded without a fixed click track.
 
 ```{r}
 elktempo <- read_csv("dat/elktempo.csv")
@@ -356,6 +347,8 @@ elktempo |>
   theme_classic()
 ```
 
+Tempogram - *Heavy/Like a Witch*<br><br>
+The tempogram below shows that the parts of this track in which the drummer mostly plays fills are too hard to be tracked. There is no significant reason to believe that the tempo changes throughout the track.
 
 ```{r}
 heavytempo <- read_csv("dat/heavytempo.csv")
@@ -374,9 +367,14 @@ heavytempo |>
 
 ## Timbre
 
+Cepstogram - *Elk.Blood.Heart*<br><br>
+The Cepstogram below shows that there is a change of timbre after the soft intro and from the solo at 240 seconds and onwards.
+
 ```{r}
 elkmel <- read_csv("dat/elkmel.csv")
+```
 
+```{r}
 elkmel |>
   compmus_wrangle_timbre() |> 
   mutate(timbre = map(timbre, compmus_normalise, "euclidean")) |>
@@ -395,9 +393,13 @@ elkmel |>
   theme_classic()
 ```
 
+Cepstogram - *Heavy/Like a Witch*<br><br>
+The Cepstogram below shows that there is a change of timbre after the vocal intro and from the outro riff from 240 seconds and onwards, which is only played by guitar at first, resulting in the bright yellow line at mfcc_02.
 ```{r}
 heavymel <- read_csv("dat/heavymel.csv")
+```
 
+```{r}
 heavymel |>
   compmus_wrangle_timbre() |> 
   mutate(timbre = map(timbre, compmus_normalise, "euclidean")) |>
@@ -418,7 +420,11 @@ heavymel |>
 
 ## Structure
 
-```{r}
+Self-Similarity Matrix - *Elk.Blood.Heart*<br><br>
+The most noticeable thing about this self-similarity matrix is the Green vertical and horizontal stripe at the bottom and left, caused by the soft intro. This makes it hard to interpret the rest of the matrix, though the start of the guitar solo at around 280 seconds is clear, with a big green cross, portraying the change in the track. 
+
+![](Images/elkssm.png)
+```{r, eval=FALSE}
 elkmel |>
   compmus_wrangle_timbre() |> 
   filter(row_number() %% 50L == 0L) |> 
@@ -440,7 +446,11 @@ elkmel |>
   labs(x = "", y = "")
 ```
 
-```{r}
+Self-Similarity Matrix - *Heavy/Like a Witch*<br><br>
+This matrix provides a really clear structure, with a vague bar from 0 to 40 seconds where the vocal intro is playing, and bright green crosses at the pre-chorus and chorus at approximately 60, 120 and 210 seconds.
+
+![](Images/heavyssm.png)
+```{r, eval=FALSE}
 heavymel |>
   compmus_wrangle_timbre() |> 
   filter(row_number() %% 50L == 0L) |> 
@@ -462,5 +472,11 @@ heavymel |>
   labs(x = "", y = "")
 ```
 
+## Conlusion - *Our Mother Electricity*
+
+Overall, this album represents a contrast between mellow compositions and more aggressive, high-energy rock tracks. The hierarchical clustering tree supports this fact, seperating the album into these two groups.<br><br>
+The album has an organic feel for tempo, without the use of a fixed click track, making the tracks feel more alive and expressive, especially in the more emotional tracks like *Elk.Blood.Heart*.<br><br>
+Clear sectional changes are evident, but different between the two analyzed tracks. *Heavy/Like a Witch* has a well-defined and conventional structure while *Elk.Blood.Heart* seems more atmospheric.<br><br>
+Concluding, this album provides an intentional contrast between mellowness and intensity, making the album diverse and yet a cohesive whole, strengthening eacother.
 
 

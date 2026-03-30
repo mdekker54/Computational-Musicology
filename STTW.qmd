@@ -22,6 +22,18 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Introduction
 
+Each album analysis page has the exact same layout, that is:<br>
+- Album Information<br>
+- Metadata<br>
+- Clustering<br>
+- Harmony<br>
+- Tempo<br>
+- Timbre<br>
+- Structure<br>
+- Conclusion<br><br>
+
+### Album Information
+
 Released by New West Records on 24-2-2017 <br>
 Genres according to database MusicBrainz<br>
 - Blues rock
@@ -45,7 +57,8 @@ Additional credits:<br>
 
 ### Metadata
 
-..
+This album features 8 tracks, with an average duration of 5 minutes and 46 seconds. The track list below shows the length of each track in minutes.
+
 ```{r}
 alltracks <- read_csv("computational_musicology_alltracks.csv")
 
@@ -82,6 +95,9 @@ ggplot(sttw_df, aes(x = duration_min, y = forcats::fct_rev(`Track Name`))) +
   theme_minimal() +
   xlim(0, max(sttw_df$duration_min) * 1.1)
 ```
+
+The average tempo of this album is 117bpm with a minimum of 84bpm and a maximum of 139bpm. The track list below shows the tempo of each track in bpm.	
+
 ```{r}
 alltracks %>%
   filter(`Album Name` == "Sleeping Through The War") %>%
@@ -99,7 +115,10 @@ alltracks %>%
   theme_minimal()
 ```
 
-## Clustering and Classification
+## Clustering
+
+To analyze six albums within the scope of this course, clustering is used to select two representative tracks per album for deeper analysis. A hierarchical clustering tree is shown below, based on the following variables: danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration, and time signature. Popularity is excluded, as it does not reflect the audio characteristics of the tracks. From each of the two primary clusters, the most streamed track is selected.<br><br>
+The resulting clusters reflect distinct musical characteristics. The tracks in cluster one are mostly tracks that switch between fuzz-driven, high energy parts and clean and calm parts multiple times in the track. Cluster two, on the other hand, consists mostly of hypnotically repeating psychedelic grooves using instruments with heavy reverb and experimental effects, delay as the most notable one. The most streamed track in cluster one is *Alabaster* and the most streamed track in cluster two is *Am I Going Up?*.
 
 ```{r}
 sttw_juice <-
@@ -135,9 +154,11 @@ d <- sttw_dist |>
 d$labels$label <- as.character(d$labels$label)
 ggdendrogram(d)
 ```
-Alabaster<br>
-Am I Going Up?
+
 ## Harmony
+
+Chromagram - *Alabaster*<br><br>
+As seen in the plot below, the dominant pitches, mostly Bb, E and C, are consistent until the halfway point of the track. After the halfway point, there is an instrumental section with added percussion and guitar fills, which make the chromagram a lot more busy. Apart from that, this track is consistent and repeats itself constantly.
 
 ```{r}
 alabaster <- read_csv("dat/alabaster.csv")
@@ -159,6 +180,9 @@ alabaster |>
   theme_minimal() +
   scale_fill_viridis_c()
 ```
+
+Chromagram - *Am I Going Up?*<br><br>
+As seen in the plot below, the dominant pitches of this track are A and E. This track repeats itself over and over again, resulting in a really consistent chromagram.
 
 ```{r}
 up <- read_csv("dat/up.csv")
@@ -269,6 +293,9 @@ key_templates <-
   )
 ```
 
+Keygram - *Alabaster*<br><br>
+As mentioned earlier, the most dominant pitches of this track are the Bb, E and C. The keygram below shows that the most important tonality of this track is Cmaj. There are some differences to be seen from the instrumental part in the track, but Cmaj stays dominant throughout.
+
 ```{r}
 alabaster |> 
   compmus_wrangle_chroma() |> 
@@ -287,6 +314,9 @@ alabaster |>
   labs(x = "Time (s)", y = "")
 ```
 
+Keygram - *Am I Going Up?*<br><br>
+As mentioned earlier, the most dominant pitches of this track are A and E, consistently throughout the whole track. The keygram below emphasizes this, as specifically the Emaj, Amaj and Amin keys are all portrayed as dark blue stripes. This plot shows no significant reason to believe that this track is written in either Amaj or Amin.
+
 ```{r}
 up |> 
   compmus_wrangle_chroma() |> 
@@ -304,41 +334,11 @@ up |>
   theme_minimal() +
   labs(x = "Time (s)", y = "")
 ```
-```{r}
-alabaster |> 
-  compmus_wrangle_chroma() |> 
-  filter(row_number() %% 50L == 0L) |> 
-  compmus_match_pitch_template(
-    chord_templates,         # Change to chord_templates if desired
-    method = "euclidean",  # Try different distance metrics
-    norm = "manhattan"     # Try different norms
-  ) |>
-  ggplot(
-    aes(x = start + duration / 2, width = 50 * duration, y = name, fill = d)
-  ) +
-  geom_tile() +
-  scale_fill_viridis_c(guide = "none") +
-  theme_minimal() +
-  labs(x = "Time (s)", y = "")
-```
-```{r}
-up |> 
-  compmus_wrangle_chroma() |> 
-  filter(row_number() %% 50L == 0L) |> 
-  compmus_match_pitch_template(
-    chord_templates,         # Change to chord_templates if desired
-    method = "euclidean",  # Try different distance metrics
-    norm = "manhattan"     # Try different norms
-  ) |>
-  ggplot(
-    aes(x = start + duration / 2, width = 50 * duration, y = name, fill = d)
-  ) +
-  geom_tile() +
-  scale_fill_viridis_c(guide = "none") +
-  theme_minimal() +
-  labs(x = "Time (s)", y = "")
-```
-## Rhythm and Tempo
+
+## Tempo
+
+Tempogram - *Alabaster*<br><br>
+The tempogram below shows a clean and consistent tempo with minor variations. This could mean that there was no click track present at the recording, but micro timing is also tracked and portrayed by the tempo subharmonics, making it impossible to conclude if there was a click track present or not.
 
 ```{r}
 alabastertempo <- read_csv("dat/alabastertempo.csv")
@@ -353,6 +353,9 @@ alabastertempo |>
   labs(x = "Time (s)", y = "Tempo (BPM)") +
   theme_classic()
 ```
+
+Tempogram - *Am I Going Up?*<br><br>
+The tempogram below shows a clean and consistent tempo. There is almost no variation to be seen.
 
 ```{r}
 uptempo <- read_csv("dat/uptempo.csv")
@@ -369,6 +372,9 @@ uptempo |>
 ```
 
 ## Timbre
+
+Cepstogram - *Alabaster*<br><br>
+The Cepstogram below shows that when speaking about timbre features, this track is repeating itself throughout the whole track, apart from the silence in the outro
 
 ```{r}
 alabastermel <- read_csv("dat/alabastermel.csv")
@@ -390,6 +396,9 @@ alabastermel |>
   scale_fill_viridis_c() +                              
   theme_classic()
 ```
+
+Cepstogram - *Am I Going Up?*<br><br>
+The Cepstogram below shows that when speaking about timbre features, this track is repeating itself throughout the whole track, apart from the silence in the outro
 
 ```{r}
 upmel <- read_csv("dat/upmel.csv")
@@ -414,7 +423,11 @@ upmel |>
 
 ## Structure
 
-```{r}
+Self-Similarity Matrix - *Alabaster*<br><br>
+This is a really repetitive track, making it hard to interpret what every cross means. The blue block at around 240 seconds until 280 seconds is an instrumental part with guitar-made sound effects. The outro is silent, resulting in a green stripe at the top and right of the matrix.
+
+![](Images/alabasterssm.png)
+```{r, eval=FALSE}
 alabastermel |>
   compmus_wrangle_timbre() |> 
   filter(row_number() %% 50L == 0L) |> 
@@ -436,7 +449,11 @@ alabastermel |>
   labs(x = "", y = "")
 ```
 
-```{r}
+Self-Similarity Matrix - *Am I Going Up?*<br><br>
+This matrix has a really clear structure. Because of the repetitiveness of the track, all vocal lines create a clear bright green cross. The last stripe at the top and right is the result of a silence in the outro.
+
+![](Images/upssm.png)
+```{r, eval=FALSE}
 upmel |>
   compmus_wrangle_timbre() |> 
   filter(row_number() %% 50L == 0L) |> 
@@ -457,3 +474,11 @@ upmel |>
   theme_classic() +
   labs(x = "", y = "")
 ```
+
+## Conlusion - *Sleeping Through The War*
+
+Overall, this album is psychedelic, groove-heavy and highly repetitive. The Hierarchical clustering made a distinction between two groups: One group consists of tracks that alternate between high energy and calm parts, and one group consists of experimental, highly repetitive grooves.<br><br>
+Both representative tracks remained stable arond their center pitch.<br><br>
+The tracks are steady when speaking about tempo. There are some minor fluctuations, but it mostly is consistent, creating the hypnotic atmosphere that is so common in this album.<br><br>
+The timbre profiles and strucure are consistent as well, as most of the album relies on repetition.<br><br>
+Concluding, this album uses tracks with highly repetitive parts together with tracks that alternate between high energy and calm parts.

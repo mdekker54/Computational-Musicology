@@ -21,6 +21,19 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Introduction
 
+Each album analysis page has the exact same layout, that is:<br>
+- Album Information<br>
+- Metadata<br>
+- Clustering<br>
+- Harmony<br>
+- Tempo<br>
+- Timbre<br>
+- Structure<br>
+- Conclusion<br><br>
+
+### Album Information
+
+
 Released by New West Records on 4-9-2020 <br>
 Genres according to database MusicBrainz<br>
 - Rock
@@ -34,7 +47,8 @@ Songwriting credits:<br>
 
 ### Metadata
 
-..
+This album features 8 tracks, with an average duration of 5 minutes and 26 seconds. The track list below shows the length of each track in minutes.
+
 ```{r}
 alltracks <- read_csv("computational_musicology_alltracks.csv")
 
@@ -68,6 +82,9 @@ ggplot(nati_df, aes(x = duration_min, y = forcats::fct_rev(`Track Name`))) +
   theme_minimal() +
   xlim(0, max(nati_df$duration_min) * 1.1)
 ```
+
+The average tempo of this album is 111bpm with a minimum of 76bpm and a maximum of 152bpm. The track list below shows the tempo of each track in bpm.
+
 ```{r}
 alltracks %>%
   filter(`Album Name` == "Nothing as the Ideal") %>%
@@ -85,7 +102,10 @@ alltracks %>%
   theme_minimal()
 ```
 
-## Clustering and Classification
+## Clustering
+
+To analyze six albums within the scope of this course, clustering is used to select two representative tracks per album for deeper analysis. A hierarchical clustering tree is shown below, based on the following variables: danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration, and time signature. Popularity is excluded, as it does not reflect the audio characteristics of the tracks. From each of the two primary clusters, the most streamed track is selected.<br><br>
+The resulting clusters reflect distinct musical characteristics. The tracks in cluster one are heavy, fuzz-driven tracks with low-tuned instruments and dark sounding atmospheres and vocals. Cluster two consists of calm tracks, with on one hand the track *Everest*, an atmospheric and emotional guitar solo, and on the other hand two tracks with folk-style storytelling accompanied by clean/acoustic guitars. The most streamed track in cluster one is *Enemy of My Enemy* and the most streamed track in cluster two is *The Children of Coyote Woman*.
 
 ```{r}
 nati_juice <-
@@ -117,10 +137,10 @@ nati_dist |>
   dendro_data() |>
   ggdendrogram()
 ```
-Enemy of My Enemy<br>
-The Children of Coyote Woman
-
 ## Harmony
+
+Chromagram - *Enemy of My Enemy*<br><br>
+As seen in the plot below, the most dominant pitches of this track are the G and C. There are a lot of prominent pitches in this chromagram, which is caused by an almost chromatic guitar riff and heavy distortion. At around 50 seconds, the short chorus starts, which uses the F# and C# pitches. These pitches seem to only be used in the two choruses, with the second chorus at approximately 110 seconds. At around 140 seconds, there is a high energy outro riff including a guitar solo, which leads to more pitches being used, making the C less prominent.
 
 ```{r}
 enemy <- read_csv("dat/enemy.csv")
@@ -142,6 +162,9 @@ enemy |>
   theme_minimal() +
   scale_fill_viridis_c()
 ```
+
+Chromagram - *The Children of Coyote Woman*<br><br>
+As seen in the plot below, the most dominant pitch of this track is the A, along with the E, more subtly. This dominance of the A pitch is caused by an acoustic guitar that is playing mostly the A in octaves. The gaps in the yellow A stripe are parts in the track where the guitar plays a fill, which is why the narrow bright G stripes fall exactly in the gap of the A pitch. The chorus introduces the F pitch around 90 seconds into the track. This is repeated multiple times from 150 seconds onwards. The outro of this track is a recording of rain, making the last couple of seconds messy.
 
 ```{r}
 children <- read_csv("dat/children.csv")
@@ -251,6 +274,10 @@ key_templates <-
     "D#:min", circshift(minor_key, 3)
   )
 ```
+
+Keygram - *Enemy of My Enemy*<br><br>
+As mentioned earlier, the most dominant pitches of this track are the G and C, with variations in the two choruses and an outro solo that introduces pitches that are used less throughout the rest of the track. The keygram below emphasizes the prominent C, with no significant difference Major and Minor. During the outro solo, the Gmaj is the most prominent.
+
 ```{r}
 enemy |> 
   compmus_wrangle_chroma() |> 
@@ -268,6 +295,9 @@ enemy |>
   theme_minimal() +
   labs(x = "Time (s)", y = "")
 ```
+
+Keygram - *The Children of Coyote Woman*<br><br>
+As mentioned earlier, the most dominant pitch of this track is the A, and G when the A is not played. The Amaj and Amin keys are shown as blue stripes throughout the whole track, along with the Emaj, Dmaj and Dmin. There is no significant reason to conclude that this song is either in Amaj or Amin. The ending is a blue block, which is caused by the rain sounds in the outro of the track.
 
 ```{r}
 children |> 
@@ -287,43 +317,11 @@ children |>
   labs(x = "Time (s)", y = "")
 ```
 
-```{r}
-enemy |> 
-  compmus_wrangle_chroma() |> 
-  filter(row_number() %% 50L == 0L) |> 
-  compmus_match_pitch_template(
-    chord_templates,         # Change to chord_templates if desired
-    method = "euclidean",  # Try different distance metrics
-    norm = "manhattan"     # Try different norms
-  ) |>
-  ggplot(
-    aes(x = start + duration / 2, width = 50 * duration, y = name, fill = d)
-  ) +
-  geom_tile() +
-  scale_fill_viridis_c(guide = "none") +
-  theme_minimal() +
-  labs(x = "Time (s)", y = "")
-```
 
-```{r}
-children |> 
-  compmus_wrangle_chroma() |> 
-  filter(row_number() %% 50L == 0L) |> 
-  compmus_match_pitch_template(
-    chord_templates,         # Change to chord_templates if desired
-    method = "euclidean",  # Try different distance metrics
-    norm = "manhattan"     # Try different norms
-  ) |>
-  ggplot(
-    aes(x = start + duration / 2, width = 50 * duration, y = name, fill = d)
-  ) +
-  geom_tile() +
-  scale_fill_viridis_c(guide = "none") +
-  theme_minimal() +
-  labs(x = "Time (s)", y = "")
-```
+## Tempo
 
-## Rhythm and Tempo
+Tempogram - *Enemy of My Enemy*<br><br>
+The tempogram below shows a clear, slightly ascending tempo, until the outro solo starts playing at around 125 seconds in. From that point onwards, the drum plays a lot of fills and unusual patterns, making it hard to track the tempo.
 
 ```{r}
 enemytempo <- read_csv("dat/enemytempo.csv")
@@ -338,6 +336,9 @@ enemytempo |>
   labs(x = "Time (s)", y = "Tempo (BPM)") +
   theme_classic()
 ```
+
+Tempogram - *The Children of Coyote Woman*<br><br>
+The tempogram below shows a straight line, apart from the intro, outro and the part in the middle, because there is only vocals, guitar and rain sounds, without a clear pulse being provided by drums.
 
 ```{r}
 childrentempo <- read_csv("dat/childrentempo.csv")
@@ -354,6 +355,9 @@ childrentempo |>
 ```
 
 ## Timbre
+
+Cepstogram - *Enemy of My Enemy*<br><br>
+The Cepstogram below shows a blue dot at mfcc_03, which is a silence before the start of a newly introduced outro riff. The green bar at 60 until 70 seconds at mfcc_02 is caused by a short guitar solo. The other tiny green bars are the result of short fills or variations in riffs. The silence at the end of the outro causes the sudden change to dark blue at the end at mfcc_02.
 
 ```{r}
 enemymel <- read_csv("dat/enemymel.csv")
@@ -375,6 +379,9 @@ enemymel |>
   scale_fill_viridis_c() +                              
   theme_classic()
 ```
+
+Cepstogram - *The Children of Coyote Woman*<br><br>
+The Cepstogram below shows that this track is really consistent, with only variations shown when the guitar plays a fill, mostly seen in mfcc_03, mfcc_04 and mfcc_05. The rain sounds at the ending of the outro cause the sudden change at the end.
 
 ```{r}
 childrenmel <- read_csv("dat/childrenmel.csv")
@@ -399,7 +406,11 @@ childrenmel |>
 
 ## Structure
 
-```{r}
+Self-Similarity Matrix - *Enemy of My Enemy*<br><br>
+The bright green cross in this matrix at 33 seconds is caused by a vocal line with a lot of effect. At the 45 second mark, the are a couple of green stripes, which mark the first chorus of the track. At around 70 seconds there is a green cross consisting of multiple lines, which is created by a short guitar solo. At around the 140 second mark, the green cross represents the start of a new riff leading into an outro section. The green stripe at the top and right is a silence in the outro.
+
+![](Images/enemyssm.png)
+```{r, eval=FALSE}
 enemymel |>
   compmus_wrangle_timbre() |> 
   filter(row_number() %% 50L == 0L) |> 
@@ -421,7 +432,11 @@ enemymel |>
   labs(x = "", y = "")
 ```
 
-```{r}
+Self-Similarity Matrix - *The Children of Coyote Woman*<br><br>
+In this matrix there are two clear green crosses at around the 65 and 165 second mark, which are caused by guitar fills. The big green stripe at the top and right are caused by rain sounds at the end of the outro.
+
+![](Images/childrenssm.png)
+```{r, eval=FALSE}
 childrenmel |>
   compmus_wrangle_timbre() |> 
   filter(row_number() %% 50L == 0L) |> 
@@ -443,3 +458,10 @@ childrenmel |>
   labs(x = "", y = "")
 ```
 
+## Conlusion - *Nothing as the Ideal*
+
+Overall, this album shows a big contrast between aggressive, dark fuzz-driven tracks and calm folky tracks. The hierarchical clustering seperated these tracks.<br><br>
+Both groups stay around their tonal centers, but they do it quite differently. The more aggressive and dark sounding tracks use almost chromatic scales reaching most pitches, while the folky tracks stay around the same groups of pitches.<br><br>
+This album is mostly steady when speaking about tempo, though there are some minor fluctuations, making the performance seem live and organic.<br><br>
+Structurally, there are tracks with conventional rock structures, and tracks that follow more repetitive structures using guitar fills to break up the parts.<br><br>
+Concluding, this album uses the contrast between heavy and calm tracks to its best quality, using a dark atmospheric sound on all tracks to keep the it cohesive.

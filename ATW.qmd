@@ -22,6 +22,18 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Introduction
 
+Each album analysis page has the exact same layout, that is:<br>
+- Album Information<br>
+- Metadata<br>
+- Clustering<br>
+- Harmony<br>
+- Tempo<br>
+- Timbre<br>
+- Structure<br>
+- Conclusion<br><br>
+
+### Album Information
+
 Released by New West Records on 24-2-2017 <br>
 Genres according to database MusicBrainz<br>
 - Blues rock
@@ -39,7 +51,8 @@ Songwriting credits:<br>
 
 ### Metadata
 
-..
+This album features 8 tracks, with an average duration of 6 minutes and 29 seconds. The track list below shows the length of each track in minutes.
+
 ```{r}
 alltracks <- read_csv("computational_musicology_alltracks.csv")
 
@@ -73,6 +86,9 @@ ggplot(atw_df, aes(x = duration_min, y = forcats::fct_rev(`Track Name`))) +
   theme_minimal() +
   xlim(0, max(atw_df$duration_min) * 1.1)
 ```
+
+The average tempo of this album is 118bpm with a minimum of 63bpm and a maximum of 153bpm. The track list below shows the tempo of each track in bpm.
+
 ```{r}
 alltracks %>%
   filter(`Album Name` == "ATW") %>%
@@ -90,7 +106,10 @@ alltracks %>%
   theme_minimal()
 ```
 
-## Clustering and Classification
+## Clustering
+
+To analyze six albums within the scope of this course, clustering is used to select two representative tracks per album for deeper analysis. A hierarchical clustering tree is shown below, based on the following variables: danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration, and time signature. Popularity is excluded, as it does not reflect the audio characteristics of the tracks. From each of the two primary clusters, the most streamed track is selected.<br><br>
+The resulting clusters reflect distinct musical characteristics. The tracks in cluster one have a clear pulse and structurally sound and feel like jam sessions. Cluster two, on the other hand, consists mostly of tracks with big build-ups and climaxes. They sound clean and calm at first, but work up to parts with big solos, a change in feel, or more experimental or empty sounding ends after the climax. The most streamed track in cluster one is *Fishbelly 86 Onions* and the most streamed track in cluster two is *Diamond*.
 
 ```{r}
 atw_juice <-
@@ -122,9 +141,11 @@ atw_dist |>
   dendro_data() |>
   ggdendrogram()
 ```
-Fishbelly 86 Onions<br>
-Diamond
+
 ## Harmony
+
+Chromagram - *Fishbelly 86 Onions*<br><br>
+As seen in the plot below, the most dominant pitch of this track is the G, consistently, along with the Bb, F, D and C. This track consists of a single riff that is repeated over and over again, which results in a consistent dominant pitch.
 
 ```{r}
 fishbelly <- read_csv("dat/fishbelly.csv")
@@ -146,6 +167,9 @@ fishbelly |>
   theme_minimal() +
   scale_fill_viridis_c()
 ```
+
+Chromagram - *Diamond*<br><br>
+As seen in the plot below, the most dominant pitches are the A and D throughout the whole track. The pitches F#, F ,C and E form a pattern that repeats itself seven times, which is caused by the electric guitar riff with only the accompaniment of a single bass pitch and simple drums.
 
 ```{r}
 diamond <- read_csv("dat/diamond.csv")
@@ -256,6 +280,10 @@ key_templates <-
     "D#:min", circshift(minor_key, 3)
   )
 ```
+
+Keygram - *Fishbelly 86 Onions*<br><br>
+As mentioned earlier, the most dominant pitch of this track is G, consistently. In the keygram below the Gmaj and Gmin keys are visibly colored blue, but there is no real noticeable difference between the both of them, and the Cmaj and Cmin keys, apart from the ending. The last 30 seconds, the C keys are less visible. This is the result of a long jam-like outro, with no real structure or melody.
+
 ```{r}
 fishbelly |> 
   compmus_wrangle_chroma() |> 
@@ -273,6 +301,9 @@ fishbelly |>
   theme_minimal() +
   labs(x = "Time (s)", y = "")
 ```
+
+Keygram - *Diamond*<br><br>
+As mentioned earlier, the most dominant pitches of this track are the A and D, with interesting repeating patterns between the F#, F, C and E. In the keygram below it is evident that the Dmaj key is the most important key, as its row has the darkest blue color throughout the whole track. The last fifty seconds are almost completely blue, caused by a fade-out, consisting of only a basic drum pattern and ghost notes on the guitar.
 
 ```{r}
 diamond |> 
@@ -292,42 +323,10 @@ diamond |>
   labs(x = "Time (s)", y = "")
 ```
 
+## Tempo
 
-```{r}
-fishbelly |> 
-  compmus_wrangle_chroma() |> 
-  filter(row_number() %% 50L == 0L) |> 
-  compmus_match_pitch_template(
-    chord_templates,         # Change to chord_templates if desired
-    method = "euclidean",  # Try different distance metrics
-    norm = "manhattan"     # Try different norms
-  ) |>
-  ggplot(
-    aes(x = start + duration / 2, width = 50 * duration, y = name, fill = d)
-  ) +
-  geom_tile() +
-  scale_fill_viridis_c(guide = "none") +
-  theme_minimal() +
-  labs(x = "Time (s)", y = "")
-```
-```{r}
-diamond |> 
-  compmus_wrangle_chroma() |> 
-  filter(row_number() %% 50L == 0L) |> 
-  compmus_match_pitch_template(
-    chord_templates,         # Change to chord_templates if desired
-    method = "euclidean",  # Try different distance metrics
-    norm = "manhattan"     # Try different norms
-  ) |>
-  ggplot(
-    aes(x = start + duration / 2, width = 50 * duration, y = name, fill = d)
-  ) +
-  geom_tile() +
-  scale_fill_viridis_c(guide = "none") +
-  theme_minimal() +
-  labs(x = "Time (s)", y = "")
-```
-## Rhythm and Tempo
+Tempogram - *Fishbelly 86 Onions*<br><br>
+The tempogram below is quite messy, but it is evident that the track speeds up from the beginning to the end.
 
 ```{r}
 fishbellytempo <- read_csv("dat/fishbellytempo.csv")
@@ -342,6 +341,9 @@ fishbellytempo |>
   labs(x = "Time (s)", y = "Tempo (BPM)") +
   theme_classic()
 ```
+
+Tempogram - *Diamond*<br><br>
+The tempogram below is consistent, with slight variations in tempo. At the instrumental riff part around 220 seconds in, the tempogram does not track the tempo, due to the rhythm of the riff, which does not have a clear pulse.
 
 ```{r}
 diamondtempo <- read_csv("dat/diamondtempo.csv")
@@ -358,6 +360,9 @@ diamondtempo |>
 ```
 
 ## Timbre
+
+Cepstogram - *Fishbelly 86 Onions*<br><br>
+The Cepstogram below shows blue vertical stripes at the vocal-only parts of this track, indicating a big difference with the rest. Apart for the small silence in the outro and these stripes, the track is really consistent.
 
 ```{r}
 fishbellymel <- read_csv("dat/fishbellymel.csv")
@@ -379,6 +384,9 @@ fishbellymel |>
   scale_fill_viridis_c() +                              
   theme_classic()
 ```
+
+Cepstogram - *Diamond*<br><br>
+The Cepstogram below shows a blue bar at mfcc_03 around 200 seconds in, which is the start of an instrumental bridge part. Apart from this part and the silence in the outro, this track is really consistent.
 
 ```{r}
 diamondmel <- read_csv("dat/diamondmel.csv")
@@ -403,7 +411,11 @@ diamondmel |>
 
 # Structure
 
-```{r}
+Self-Similarity Matrix - *Fishbelly 86 Onions*<br><br>
+This matrix has a really clear structure, caused by the repetitiveness of the track. Every bright green cross is created by a vocal line with muted instruments. The line at the top and right is the result of a silence in the outro.
+
+![](Images/fishbellyssm.png)
+```{r, eval=FALSE}
 fishbellymel |>
   compmus_wrangle_timbre() |> 
   filter(row_number() %% 50L == 0L) |> 
@@ -425,7 +437,11 @@ fishbellymel |>
   labs(x = "", y = "")
 ```
 
-```{r}
+Self-Similarity Matrix - *Diamond*<br><br>
+This matrix is quite clear, almost empty. The bright green narrow crosses are caused by the vocal line that steps away from the main melody. Starting at around 180 seconds until around 240 seconds, there is an instrumental bridge section, creating the big vague blue cross. The green stripe at the top and right is caused by a silence in the outro.
+
+![](Images/diamondssm.png)
+```{r, eval=FALSE}
 diamondmel |>
   compmus_wrangle_timbre() |> 
   filter(row_number() %% 50L == 0L) |> 
@@ -446,3 +462,11 @@ diamondmel |>
   theme_classic() +
   labs(x = "", y = "")
 ```
+
+## Conlusion - *ATW*
+
+Overall, this album uses big build ups and jam-oriented parts. The hierarchical clustering made two groups: One group consists of tracks with repetition, a clear pulse and a jam-like feel and structure, while the other group uses build-ups to a big climax at or near the end of the track.<br><br>
+The tracks stay around their centered pitch, using repeated melodic patterns, without modulating too much.<br><br>
+The tempo of the tracks on this album feels organice, and fluctuates a bit to a lot. There seems to be no use of a fixed click track.<br><br>
+Structurally, the tracks on this album are either built around one or two riffs like a jam session, or  around an evolving structure that builds ups over the course of the track, which is less repetitive, using clear transitions between parts.<br><br>
+Concluding, this album contains tracks evolving structures that build to the climax, and tracks that are centered around a central idea, like a jam session.

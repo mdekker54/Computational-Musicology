@@ -208,10 +208,14 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Each album analysis page has the exact same layout, that is:<br> - Album Information<br> - Metadata<br> - Clustering<br> - Harmony<br> - Tempo<br> - Timbre<br> - Structure<br> - Conclusion<br><br></p>
+<section id="album-information" class="level3">
+<h3 class="anchored" data-anchor-id="album-information">Album Information</h3>
 <p>Released by New West Records on 24-2-2017 <br> Genres according to database MusicBrainz<br> - Blues rock - Psychedelic rock - Hard rock - Neo-psychedelica - Rock<br><br> Producer: Dave Cobb<br> Songwriting credits:<br> - Charles Michael Parks Jr.&nbsp;- Vocals, Bass guitar, Acoustic Guitar, Mellotron, Percussion and Loops<br> - Allan Van Cleave - Organ, Piano, Rhodes Piano and Mellotron<br> - Ben McLeod - Electric Guitar, Bass, Mellotron and Percussion<br> - Robby Staebler - Drums and Congas<br> <br> Additional credits:<br> - Mickey Raphael - Harmonica<br> - Dave Cobb - Percussion<br> - Caitlin Rose - Backing Vocals - Erin Rae - Backing Vocals - Tristan Gaspadarek - Backing Vocals</p>
+</section>
 <section id="metadata" class="level3">
 <h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
-<p>..</p>
+<p>This album features 8 tracks, with an average duration of 5 minutes and 46 seconds. The track list below shows the length of each track in minutes.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -221,6 +225,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>The average tempo of this album is 117bpm with a minimum of 84bpm and a maximum of 139bpm. The track list below shows the tempo of each track in bpm.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -232,8 +237,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 </section>
-<section id="clustering-and-classification" class="level2">
-<h2 class="anchored" data-anchor-id="clustering-and-classification">Clustering and Classification</h2>
+<section id="clustering" class="level2">
+<h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
+<p>To analyze six albums within the scope of this course, clustering is used to select two representative tracks per album for deeper analysis. A hierarchical clustering tree is shown below, based on the following variables: danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration, and time signature. Popularity is excluded, as it does not reflect the audio characteristics of the tracks. From each of the two primary clusters, the most streamed track is selected.<br><br> The resulting clusters reflect distinct musical characteristics. The tracks in cluster one are mostly tracks that switch between fuzz-driven, high energy parts and clean and calm parts multiple times in the track. Cluster two, on the other hand, consists mostly of hypnotically repeating psychedelic grooves using instruments with heavy reverb and experimental effects, delay as the most notable one. The most streamed track in cluster one is <em>Alabaster</em> and the most streamed track in cluster two is <em>Am I Going Up?</em>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -243,7 +249,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Alabaster<br> Am I Going Up? ## Harmony</p>
+</section>
+<section id="harmony" class="level2">
+<h2 class="anchored" data-anchor-id="harmony">Harmony</h2>
+<p>Chromagram - <em>Alabaster</em><br><br> As seen in the plot below, the dominant pitches, mostly Bb, E and C, are consistent until the halfway point of the track. After the halfway point, there is an instrumental section with added percussion and guitar fills, which make the chromagram a lot more busy. Apart from that, this track is consistent and repeats itself constantly.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -253,6 +262,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Chromagram - <em>Am I Going Up?</em><br><br> As seen in the plot below, the dominant pitches of this track are A and E. This track repeats itself over and over again, resulting in a really consistent chromagram.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -262,6 +272,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Keygram - <em>Alabaster</em><br><br> As mentioned earlier, the most dominant pitches of this track are the Bb, E and C. The keygram below shows that the most important tonality of this track is Cmaj. There are some differences to be seen from the instrumental part in the track, but Cmaj stays dominant throughout.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -271,6 +282,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Keygram - <em>Am I Going Up?</em><br><br> As mentioned earlier, the most dominant pitches of this track are A and E, consistently throughout the whole track. The keygram below emphasizes this, as specifically the Emaj, Amaj and Amin keys are all portrayed as dark blue stripes. This plot shows no significant reason to believe that this track is written in either Amaj or Amin.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -280,6 +292,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="tempo" class="level2">
+<h2 class="anchored" data-anchor-id="tempo">Tempo</h2>
+<p>Tempogram - <em>Alabaster</em><br><br> The tempogram below shows a clean and consistent tempo with minor variations. This could mean that there was no click track present at the recording, but micro timing is also tracked and portrayed by the tempo subharmonics, making it impossible to conclude if there was a click track present or not.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -289,6 +305,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Tempogram - <em>Am I Going Up?</em><br><br> The tempogram below shows a clean and consistent tempo. There is almost no variation to be seen.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -299,8 +316,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="rhythm-and-tempo" class="level2">
-<h2 class="anchored" data-anchor-id="rhythm-and-tempo">Rhythm and Tempo</h2>
+<section id="timbre" class="level2">
+<h2 class="anchored" data-anchor-id="timbre">Timbre</h2>
+<p>Cepstogram - <em>Alabaster</em><br><br> The Cepstogram below shows that when speaking about timbre features, this track is repeating itself throughout the whole track, apart from the silence in the outro</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -310,6 +328,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Cepstogram - <em>Am I Going Up?</em><br><br> The Cepstogram below shows that when speaking about timbre features, this track is repeating itself throughout the whole track, apart from the silence in the outro</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -320,47 +339,16 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="timbre" class="level2">
-<h2 class="anchored" data-anchor-id="timbre">Timbre</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="STTW_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="STTW_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section id="structure" class="level2">
 <h2 class="anchored" data-anchor-id="structure">Structure</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="STTW_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="STTW_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Self-Similarity Matrix - <em>Alabaster</em><br><br> This is a really repetitive track, making it hard to interpret what every cross means. The blue block at around 240 seconds until 280 seconds is an instrumental part with guitar-made sound effects. The outro is silent, resulting in a green stripe at the top and right of the matrix.</p>
+<p><img src="Images/alabasterssm.png" class="img-fluid"></p>
+<p>Self-Similarity Matrix - <em>Am I Going Up?</em><br><br> This matrix has a really clear structure. Because of the repetitiveness of the track, all vocal lines create a clear bright green cross. The last stripe at the top and right is the result of a silence in the outro.</p>
+<p><img src="Images/upssm.png" class="img-fluid"></p>
+</section>
+<section id="conlusion---sleeping-through-the-war" class="level2">
+<h2 class="anchored" data-anchor-id="conlusion---sleeping-through-the-war">Conlusion - <em>Sleeping Through The War</em></h2>
+<p>Overall, this album is psychedelic, groove-heavy and highly repetitive. The Hierarchical clustering made a distinction between two groups: One group consists of tracks that alternate between high energy and calm parts, and one group consists of experimental, highly repetitive grooves.<br><br> Both representative tracks remained stable arond their center pitch.<br><br> The tracks are steady when speaking about tempo. There are some minor fluctuations, but it mostly is consistent, creating the hypnotic atmosphere that is so common in this album.<br><br> The timbre profiles and strucure are consistent as well, as most of the album relies on repetition.<br><br> Concluding, this album uses tracks with highly repetitive parts together with tracks that alternate between high energy and calm parts.</p>
 
 
 </section>

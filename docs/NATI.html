@@ -208,10 +208,14 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Each album analysis page has the exact same layout, that is:<br> - Album Information<br> - Metadata<br> - Clustering<br> - Harmony<br> - Tempo<br> - Timbre<br> - Structure<br> - Conclusion<br><br></p>
+<section id="album-information" class="level3">
+<h3 class="anchored" data-anchor-id="album-information">Album Information</h3>
 <p>Released by New West Records on 4-9-2020 <br> Genres according to database MusicBrainz<br> - Rock - Stoner rock<br><br> Producer: Andy Putnam and All Them Witches<br> Songwriting credits:<br> - Charles Michael Parks Jr.&nbsp;- Vocals, Bass guitar, Guitar, Loops and Piano<br> - Ben McLeod - Electric Guitar, Resonator Guitar, Loops and Piano<br> - Robby Staebler - Drums, Synthesizer, Loops and Tapes<br> <br></p>
+</section>
 <section id="metadata" class="level3">
 <h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
-<p>..</p>
+<p>This album features 8 tracks, with an average duration of 5 minutes and 26 seconds. The track list below shows the length of each track in minutes.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -221,6 +225,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>The average tempo of this album is 111bpm with a minimum of 76bpm and a maximum of 152bpm. The track list below shows the tempo of each track in bpm.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -232,8 +237,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 </section>
-<section id="clustering-and-classification" class="level2">
-<h2 class="anchored" data-anchor-id="clustering-and-classification">Clustering and Classification</h2>
+<section id="clustering" class="level2">
+<h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
+<p>To analyze six albums within the scope of this course, clustering is used to select two representative tracks per album for deeper analysis. A hierarchical clustering tree is shown below, based on the following variables: danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration, and time signature. Popularity is excluded, as it does not reflect the audio characteristics of the tracks. From each of the two primary clusters, the most streamed track is selected.<br><br> The resulting clusters reflect distinct musical characteristics. The tracks in cluster one are heavy, fuzz-driven tracks with low-tuned instruments and dark sounding atmospheres and vocals. Cluster two consists of calm tracks, with on one hand the track <em>Everest</em>, an atmospheric and emotional guitar solo, and on the other hand two tracks with folk-style storytelling accompanied by clean/acoustic guitars. The most streamed track in cluster one is <em>Enemy of My Enemy</em> and the most streamed track in cluster two is <em>The Children of Coyote Woman</em>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -243,10 +249,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Enemy of My Enemy<br> The Children of Coyote Woman</p>
 </section>
 <section id="harmony" class="level2">
 <h2 class="anchored" data-anchor-id="harmony">Harmony</h2>
+<p>Chromagram - <em>Enemy of My Enemy</em><br><br> As seen in the plot below, the most dominant pitches of this track are the G and C. There are a lot of prominent pitches in this chromagram, which is caused by an almost chromatic guitar riff and heavy distortion. At around 50 seconds, the short chorus starts, which uses the F# and C# pitches. These pitches seem to only be used in the two choruses, with the second chorus at approximately 110 seconds. At around 140 seconds, there is a high energy outro riff including a guitar solo, which leads to more pitches being used, making the C less prominent.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -256,6 +262,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Chromagram - <em>The Children of Coyote Woman</em><br><br> As seen in the plot below, the most dominant pitch of this track is the A, along with the E, more subtly. This dominance of the A pitch is caused by an acoustic guitar that is playing mostly the A in octaves. The gaps in the yellow A stripe are parts in the track where the guitar plays a fill, which is why the narrow bright G stripes fall exactly in the gap of the A pitch. The chorus introduces the F pitch around 90 seconds into the track. This is repeated multiple times from 150 seconds onwards. The outro of this track is a recording of rain, making the last couple of seconds messy.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -265,6 +272,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Keygram - <em>Enemy of My Enemy</em><br><br> As mentioned earlier, the most dominant pitches of this track are the G and C, with variations in the two choruses and an outro solo that introduces pitches that are used less throughout the rest of the track. The keygram below emphasizes the prominent C, with no significant difference Major and Minor. During the outro solo, the Gmaj is the most prominent.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -274,6 +282,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Keygram - <em>The Children of Coyote Woman</em><br><br> As mentioned earlier, the most dominant pitch of this track is the A, and G when the A is not played. The Amaj and Amin keys are shown as blue stripes throughout the whole track, along with the Emaj, Dmaj and Dmin. There is no significant reason to conclude that this song is either in Amaj or Amin. The ending is a blue block, which is caused by the rain sounds in the outro of the track.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -283,6 +292,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="tempo" class="level2">
+<h2 class="anchored" data-anchor-id="tempo">Tempo</h2>
+<p>Tempogram - <em>Enemy of My Enemy</em><br><br> The tempogram below shows a clear, slightly ascending tempo, until the outro solo starts playing at around 125 seconds in. From that point onwards, the drum plays a lot of fills and unusual patterns, making it hard to track the tempo.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -292,6 +305,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Tempogram - <em>The Children of Coyote Woman</em><br><br> The tempogram below shows a straight line, apart from the intro, outro and the part in the middle, because there is only vocals, guitar and rain sounds, without a clear pulse being provided by drums.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -302,8 +316,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="rhythm-and-tempo" class="level2">
-<h2 class="anchored" data-anchor-id="rhythm-and-tempo">Rhythm and Tempo</h2>
+<section id="timbre" class="level2">
+<h2 class="anchored" data-anchor-id="timbre">Timbre</h2>
+<p>Cepstogram - <em>Enemy of My Enemy</em><br><br> The Cepstogram below shows a blue dot at mfcc_03, which is a silence before the start of a newly introduced outro riff. The green bar at 60 until 70 seconds at mfcc_02 is caused by a short guitar solo. The other tiny green bars are the result of short fills or variations in riffs. The silence at the end of the outro causes the sudden change to dark blue at the end at mfcc_02.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -313,6 +328,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Cepstogram - <em>The Children of Coyote Woman</em><br><br> The Cepstogram below shows that this track is really consistent, with only variations shown when the guitar plays a fill, mostly seen in mfcc_03, mfcc_04 and mfcc_05. The rain sounds at the ending of the outro cause the sudden change at the end.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -323,47 +339,16 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="timbre" class="level2">
-<h2 class="anchored" data-anchor-id="timbre">Timbre</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="NATI_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="NATI_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section id="structure" class="level2">
 <h2 class="anchored" data-anchor-id="structure">Structure</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="NATI_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="NATI_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Self-Similarity Matrix - <em>Enemy of My Enemy</em><br><br> The bright green cross in this matrix at 33 seconds is caused by a vocal line with a lot of effect. At the 45 second mark, the are a couple of green stripes, which mark the first chorus of the track. At around 70 seconds there is a green cross consisting of multiple lines, which is created by a short guitar solo. At around the 140 second mark, the green cross represents the start of a new riff leading into an outro section. The green stripe at the top and right is a silence in the outro.</p>
+<p><img src="Images/enemyssm.png" class="img-fluid"></p>
+<p>Self-Similarity Matrix - <em>The Children of Coyote Woman</em><br><br> In this matrix there are two clear green crosses at around the 65 and 165 second mark, which are caused by guitar fills. The big green stripe at the top and right are caused by rain sounds at the end of the outro.</p>
+<p><img src="Images/childrenssm.png" class="img-fluid"></p>
+</section>
+<section id="conlusion---nothing-as-the-ideal" class="level2">
+<h2 class="anchored" data-anchor-id="conlusion---nothing-as-the-ideal">Conlusion - <em>Nothing as the Ideal</em></h2>
+<p>Overall, this album shows a big contrast between aggressive, dark fuzz-driven tracks and calm folky tracks. The hierarchical clustering seperated these tracks.<br><br> Both groups stay around their tonal centers, but they do it quite differently. The more aggressive and dark sounding tracks use almost chromatic scales reaching most pitches, while the folky tracks stay around the same groups of pitches.<br><br> This album is mostly steady when speaking about tempo, though there are some minor fluctuations, making the performance seem live and organic.<br><br> Structurally, there are tracks with conventional rock structures, and tracks that follow more repetitive structures using guitar fills to break up the parts.<br><br> Concluding, this album uses the contrast between heavy and calm tracks to its best quality, using a dark atmospheric sound on all tracks to keep the it cohesive.</p>
 
 
 </section>

@@ -208,12 +208,14 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Each album analysis page has the exact same layout, that is:<br> - Album Information<br> - Metadata<br> - Clustering<br> - Harmony<br> - Tempo<br> - Timbre<br> - Structure<br> - Conclusion<br><br></p>
 <section id="album-information" class="level3">
 <h3 class="anchored" data-anchor-id="album-information">Album Information</h3>
 <p>Self-released on 16-9-2012<br> Re-released by Elektrohasch Records on 7-12-2012 <br> Genres according to database MusicBrainz<br> - Stoner rock - Blues rock - Psychedelic - Psychedelic rock - Blues<br><br> Producer: Andy Putnam<br> Songwriting credits:<br> - Charles Michael Parks Jr.&nbsp;- Vocals and Bass guitar<br> - Allan Van Cleave - Keyboards<br> - Ben McLeod - Vocals and Guitar<br> - Robby Staebler - Drums and Percussion<br></p>
 </section>
 <section id="metadata" class="level3">
 <h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<p>This album features 10 tracks, with an average duration of 4 minutes and 46 seconds. The track list below shows the length of each track in minutes.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -223,6 +225,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>The average tempo of this album is 124bpm with a minimum of 76bpm and a maximum of 174bpm. The track list below shows the tempo of each track in bpm.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -234,8 +237,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 </section>
-<section id="clustering-and-classification" class="level2">
-<h2 class="anchored" data-anchor-id="clustering-and-classification">Clustering and Classification</h2>
+<section id="clustering" class="level2">
+<h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
+<p>To analyze six albums within the scope of this course, clustering is used to select two representative tracks per album for deeper analysis. A hierarchical clustering tree is shown below, based on the following variables: danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration, and time signature. Popularity is excluded, as it does not reflect the audio characteristics of the tracks. From each of the two primary clusters, the most streamed track is selected.<br><br> The resulting clusters reflect distinct musical characteristics. The tracks in cluster one are mellow tracks, containing mostly folky clean and/or acoustic guitars and calm vocals, with subtle percussion. Cluster two, on the other hand, consists mostly of higher energy rock tracks with a mix of clean and distorted sounds and more aggressive sounding vocals and percussion. The most streamed track in cluster one is <em>Elk.Blood.Heart</em> and the most streamed track in cluster two is <em>Heavy/Like a Witch</em>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -245,10 +249,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Elk.Blood.Heart<br> Heavy/Like a Witch</p>
 </section>
 <section id="harmony" class="level2">
 <h2 class="anchored" data-anchor-id="harmony">Harmony</h2>
+<p>Chromagram - <em>Elk.Blood.Heart</em><br><br> As seen in the plot below, the most dominant pitch in this track is the D. The A, a fifth of D, is dominant together with D, as expected. The presence of the pitch F is interesting, as this makes the scenario in which the minor mode is used in this track quite probable, as opposed to the F#. At around the 300 seconds mark there is a shift to C# and back to D visible, which is the result of a minor change in the melody and chords of the chorus.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -258,6 +262,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Chromagram - <em>Heavy/Like a Witch</em><br><br> As seen in the plot below, the most dominant pitch in this track is the C, along with the Bb, G and most importantly E, which could suggest a major tonality. The start of the track seems messy, which is the result of a vocal part that sounds quite different compared to the rest of the track. The bright green C part at the last quarter of the track is caused by a chugging guitar riff that is mostly played on C.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -267,6 +272,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Keygram - <em>Elk.Blood.Heart</em><br><br> As mentioned earlier, the most dominant pitch of this track is the D. The keygram below shows a blue bar at both the Dmaj and Dmin, though the Dmin seems more evident. The Gmaj and Gmin, the fifth of D, show a blue bar as well. The minor variations in the chorus are not visible in the keygram.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -276,6 +282,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Keygram - <em>Heavy/Like a Witch</em><br><br> As mentioned earlier, the most dominant pitch of this track is the C. The keygram below shows a blue bar at both the Cmaj and Cmin, though the Cmaj seems more evident. The vertical gray stripe most likely resembles a silence, which is placed withing the solo vocal intro. The ending riff on C is clearly portrayed, showing bigger differences between the C tonalities and other tonalities as compared to the rest of the track.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -285,6 +292,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="tempo" class="level2">
+<h2 class="anchored" data-anchor-id="tempo">Tempo</h2>
+<p>Tempogram - <em>Elk.Blood.Heart</em><br><br> The tempogram below shows that the higher energy parts and soft intro of this track are too hard to be tracked, but it is evident that there are tempo fluctuations which makes it probable that this track is recorded without a fixed click track.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -294,6 +305,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Tempogram - <em>Heavy/Like a Witch</em><br><br> The tempogram below shows that the parts of this track in which the drummer mostly plays fills are too hard to be tracked. There is no significant reason to believe that the tempo changes throughout the track.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -304,17 +316,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="rhythm-and-tempo" class="level2">
-<h2 class="anchored" data-anchor-id="rhythm-and-tempo">Rhythm and Tempo</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="OME_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="timbre" class="level2">
+<h2 class="anchored" data-anchor-id="timbre">Timbre</h2>
+<p>Cepstogram - <em>Elk.Blood.Heart</em><br><br> The Cepstogram below shows that there is a change of timbre after the soft intro and from the solo at 240 seconds and onwards.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -324,18 +328,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-</section>
-<section id="timbre" class="level2">
-<h2 class="anchored" data-anchor-id="timbre">Timbre</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="OME_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Cepstogram - <em>Heavy/Like a Witch</em><br><br> The Cepstogram below shows that there is a change of timbre after the vocal intro and from the outro riff from 240 seconds and onwards, which is only played by guitar at first, resulting in the bright yellow line at mfcc_02.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -348,24 +341,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="structure" class="level2">
 <h2 class="anchored" data-anchor-id="structure">Structure</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="OME_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="OME_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Self-Similarity Matrix - <em>Elk.Blood.Heart</em><br><br> The most noticeable thing about this self-similarity matrix is the Green vertical and horizontal stripe at the bottom and left, caused by the soft intro. This makes it hard to interpret the rest of the matrix, though the start of the guitar solo at around 280 seconds is clear, with a big green cross, portraying the change in the track.</p>
+<p><img src="Images/elkssm.png" class="img-fluid"></p>
+<p>Self-Similarity Matrix - <em>Heavy/Like a Witch</em><br><br> This matrix provides a really clear structure, with a vague bar from 0 to 40 seconds where the vocal intro is playing, and bright green crosses at the pre-chorus and chorus at approximately 60, 120 and 210 seconds.</p>
+<p><img src="Images/heavyssm.png" class="img-fluid"></p>
+</section>
+<section id="conlusion---our-mother-electricity" class="level2">
+<h2 class="anchored" data-anchor-id="conlusion---our-mother-electricity">Conlusion - <em>Our Mother Electricity</em></h2>
+<p>Overall, this album represents a contrast between mellow compositions and more aggressive, high-energy rock tracks. The hierarchical clustering tree supports this fact, seperating the album into these two groups.<br><br> The album has an organic feel for tempo, without the use of a fixed click track, making the tracks feel more alive and expressive, especially in the more emotional tracks like <em>Elk.Blood.Heart</em>.<br><br> Clear sectional changes are evident, but different between the two analyzed tracks. <em>Heavy/Like a Witch</em> has a well-defined and conventional structure while <em>Elk.Blood.Heart</em> seems more atmospheric.<br><br> Concluding, this album provides an intentional contrast between mellowness and intensity, making the album diverse and yet a cohesive whole, strengthening eacother.</p>
 
 
 </section>

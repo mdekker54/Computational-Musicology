@@ -9,4 +9,107 @@ format:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Cross Validation
+```{r imports}
+library(plotly)
+library(ggplot2)
+library(tidyverse)
+library(compmus)
+library(tidymodels)
+library(ggdendro)
+library(heatmaply)
+```
+### Metadata
+Shown below is a plot of the mean feature profiles per album. Noticeable similarity can be recognized between *Sleeping Through The War* and *Our Mother Electricity*, at the variables: Speechiness, Loudness, Valence and Energy. Another similarity that can be seen is between *Dying Surfer Meets His Maker* and *Nothing as the Ideal*, at the variables: Acousticness, Instrumentalness, Liveness and Loudness.
+
+```{r}
+alltracks <- read_csv("computational_musicology_alltracks.csv")
+```
+```{r}
+features <- c(
+  "Danceability", "Energy", "Loudness", "Speechiness",
+  "Acousticness", "Instrumentalness", "Liveness",
+  "Valence", "Tempo"
+)
+
+alltracksdf <- alltracks |>
+  group_by(`Album Name`) |>
+  summarise(across(all_of(features), \(x) mean(x, na.rm = TRUE))) |>
+  mutate(across(all_of(features), \(x) (x - min(x)) / (max(x) - min(x)))) |>
+  rename(group = `Album Name`)
+
+alltracksdf <- alltracks |>
+  group_by(`Album Name`) |>
+  summarise(across(c(
+    Danceability, Energy, Loudness, Speechiness,
+    Acousticness, Instrumentalness, Liveness,
+    Valence, Tempo
+  ), \(x) mean(x, na.rm = TRUE))) |>
+  mutate(across(c(
+    Danceability, Energy, Loudness, Speechiness,
+    Acousticness, Instrumentalness, Liveness,
+    Valence, Tempo
+  ), \(x) (x - min(x)) / (max(x) - min(x)))) |>
+  rename(group = `Album Name`)
+
+alltrackslong <- alltracksdf |>
+  pivot_longer(-group, names_to = "feature", values_to = "value")
+
+alltrackslong <- alltrackslong |>
+  group_by(group) |>
+  arrange(feature) |>
+  group_modify(~ {
+    df <- .x
+    first_row <- df[1, ]
+    bind_rows(df, first_row)
+  }) |>
+  ungroup()
+
+ggplot(alltrackslong, aes(x = feature, y = value, group = group, color = group)) +
+  geom_line() +
+  geom_point(size = 0.5) +
+  coord_polar() +
+  labs(title = "Album mean feature profiles") +
+  theme_minimal() +
+  theme(
+    legend.position = "right",
+    legend.text = element_text(size = 7),
+    legend.key.size = unit(0.4, "cm"),
+    axis.text.x = element_text(size = 8)
+  )
+```
+
+These similarities can be portrayed a bit better by showing a Hierarchical clustering tree based on these features per album. The similarities between the earlier mentioned albums are emphasized by the tree, clustering them together. From left to right, these are the 1st, 2nd, 4th, 5th, 3rd and 6th album.
+
+```{r}
+df_mat <- alltracksdf |>
+  column_to_rownames("group") |>
+  as.matrix()
+
+dist_mat <- dist(df_mat, method = "euclidean")
+
+hc <- hclust(dist_mat, method = "ward.D2")
+
+plot(hc, main = "Hierarchical Clustering of Albums", xlab = "", sub = "")
+```
+
+## Evolution of Sound
+
+### Track List Balance
+
+The first three albums had clear distinctions between genres, while later albums used less of a distinction between genres, but more between the types of tracks, structurally and functionally,in the album. The latest album went back to the structure of the earlier albums.
+
+### Evolving Structure
+
+The tracks on early albums mostly use straightforward structures, using repetition and conventional blues and rock structures. In the later albums, they started experimenting with more progressive structures, using big build-ups, instrumental passages and solo sections.
+
+### Stablizing Tempo
+
+The tracks on early albums have a lot of fluctuation in tempo, making tracks feel like jams. The later albums rely on stable tempos with local deviations, like slowed down bridges.
+
+### Timbre Cvolution
+
+Tracks on the early albums mostly had either a clean or distorted sound. Each album, the line between clean and distorted becomes blurrier, resulting in songs on the latest album with clean parts suddenly erupting into fuzz-heavy chugging parts.
+
+## Final Conclusion
+
+The basic foundation of *All Them Witches*, which is based on repetition, organic performance and stability, has stayed relatively unchanged throughout their career, but other things did change. The complexity of music structures has increased, moving from repetitive jam-type structures to clearly segmented structures with contrasting parts in tracks, instead of contrasting tracks within the albums.

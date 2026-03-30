@@ -208,10 +208,14 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Each album analysis page has the exact same layout, that is:<br> - Album Information<br> - Metadata<br> - Clustering<br> - Harmony<br> - Tempo<br> - Timbre<br> - Structure<br> - Conclusion<br><br></p>
+<section id="album-information" class="level3">
+<h3 class="anchored" data-anchor-id="album-information">Album Information</h3>
 <p>Released by New West Records on 24-2-2017 <br> Genres according to database MusicBrainz<br> - Blues rock - Psychedelic rock - Hard rock - Neo-psychedelica - Rock<br><br> Producer: Ben McLeod<br> Songwriting credits:<br> - Charles Michael Parks Jr.&nbsp;- Vocals, Bass guitar and Loops<br> - Jonathan Draper - Rhodes Piano, Organ, Synthesizers and Percussion<br> - Ben McLeod - Electric Guitar and Acoustic Guitar<br> - Robby Staebler - Drums, Percussion and Loops<br> <br></p>
+</section>
 <section id="metadata" class="level3">
 <h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
-<p>..</p>
+<p>This album features 8 tracks, with an average duration of 6 minutes and 29 seconds. The track list below shows the length of each track in minutes.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -221,6 +225,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>The average tempo of this album is 118bpm with a minimum of 63bpm and a maximum of 153bpm. The track list below shows the tempo of each track in bpm.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -232,8 +237,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 </section>
-<section id="clustering-and-classification" class="level2">
-<h2 class="anchored" data-anchor-id="clustering-and-classification">Clustering and Classification</h2>
+<section id="clustering" class="level2">
+<h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
+<p>To analyze six albums within the scope of this course, clustering is used to select two representative tracks per album for deeper analysis. A hierarchical clustering tree is shown below, based on the following variables: danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration, and time signature. Popularity is excluded, as it does not reflect the audio characteristics of the tracks. From each of the two primary clusters, the most streamed track is selected.<br><br> The resulting clusters reflect distinct musical characteristics. The tracks in cluster one have a clear pulse and structurally sound and feel like jam sessions. Cluster two, on the other hand, consists mostly of tracks with big build-ups and climaxes. They sound clean and calm at first, but work up to parts with big solos, a change in feel, or more experimental or empty sounding ends after the climax. The most streamed track in cluster one is <em>Fishbelly 86 Onions</em> and the most streamed track in cluster two is <em>Diamond</em>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -243,7 +249,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Fishbelly 86 Onions<br> Diamond ## Harmony</p>
+</section>
+<section id="harmony" class="level2">
+<h2 class="anchored" data-anchor-id="harmony">Harmony</h2>
+<p>Chromagram - <em>Fishbelly 86 Onions</em><br><br> As seen in the plot below, the most dominant pitch of this track is the G, consistently, along with the Bb, F, D and C. This track consists of a single riff that is repeated over and over again, which results in a consistent dominant pitch.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -253,6 +262,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Chromagram - <em>Diamond</em><br><br> As seen in the plot below, the most dominant pitches are the A and D throughout the whole track. The pitches F#, F ,C and E form a pattern that repeats itself seven times, which is caused by the electric guitar riff with only the accompaniment of a single bass pitch and simple drums.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -262,6 +272,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Keygram - <em>Fishbelly 86 Onions</em><br><br> As mentioned earlier, the most dominant pitch of this track is G, consistently. In the keygram below the Gmaj and Gmin keys are visibly colored blue, but there is no real noticeable difference between the both of them, and the Cmaj and Cmin keys, apart from the ending. The last 30 seconds, the C keys are less visible. This is the result of a long jam-like outro, with no real structure or melody.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -271,6 +282,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Keygram - <em>Diamond</em><br><br> As mentioned earlier, the most dominant pitches of this track are the A and D, with interesting repeating patterns between the F#, F, C and E. In the keygram below it is evident that the Dmaj key is the most important key, as its row has the darkest blue color throughout the whole track. The last fifty seconds are almost completely blue, caused by a fade-out, consisting of only a basic drum pattern and ghost notes on the guitar.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -280,6 +292,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="tempo" class="level2">
+<h2 class="anchored" data-anchor-id="tempo">Tempo</h2>
+<p>Tempogram - <em>Fishbelly 86 Onions</em><br><br> The tempogram below is quite messy, but it is evident that the track speeds up from the beginning to the end.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -289,6 +305,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Tempogram - <em>Diamond</em><br><br> The tempogram below is consistent, with slight variations in tempo. At the instrumental riff part around 220 seconds in, the tempogram does not track the tempo, due to the rhythm of the riff, which does not have a clear pulse.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -299,8 +316,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="rhythm-and-tempo" class="level2">
-<h2 class="anchored" data-anchor-id="rhythm-and-tempo">Rhythm and Tempo</h2>
+<section id="timbre" class="level2">
+<h2 class="anchored" data-anchor-id="timbre">Timbre</h2>
+<p>Cepstogram - <em>Fishbelly 86 Onions</em><br><br> The Cepstogram below shows blue vertical stripes at the vocal-only parts of this track, indicating a big difference with the rest. Apart for the small silence in the outro and these stripes, the track is really consistent.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -310,6 +328,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Cepstogram - <em>Diamond</em><br><br> The Cepstogram below shows a blue bar at mfcc_03 around 200 seconds in, which is the start of an instrumental bridge part. Apart from this part and the silence in the outro, this track is really consistent.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -320,49 +339,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="timbre" class="level2">
-<h2 class="anchored" data-anchor-id="timbre">Timbre</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ATW_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ATW_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section id="structure" class="level1">
 <h1>Structure</h1>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ATW_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ATW_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Self-Similarity Matrix - <em>Fishbelly 86 Onions</em><br><br> This matrix has a really clear structure, caused by the repetitiveness of the track. Every bright green cross is created by a vocal line with muted instruments. The line at the top and right is the result of a silence in the outro.</p>
+<p><img src="Images/fishbellyssm.png" class="img-fluid"></p>
+<p>Self-Similarity Matrix - <em>Diamond</em><br><br> This matrix is quite clear, almost empty. The bright green narrow crosses are caused by the vocal line that steps away from the main melody. Starting at around 180 seconds until around 240 seconds, there is an instrumental bridge section, creating the big vague blue cross. The green stripe at the top and right is caused by a silence in the outro.</p>
+<p><img src="Images/diamondssm.png" class="img-fluid"></p>
+<section id="conlusion---atw" class="level2">
+<h2 class="anchored" data-anchor-id="conlusion---atw">Conlusion - <em>ATW</em></h2>
+<p>Overall, this album uses big build ups and jam-oriented parts. The hierarchical clustering made two groups: One group consists of tracks with repetition, a clear pulse and a jam-like feel and structure, while the other group uses build-ups to a big climax at or near the end of the track.<br><br> The tracks stay around their centered pitch, using repeated melodic patterns, without modulating too much.<br><br> The tempo of the tracks on this album feels organice, and fluctuates a bit to a lot. There seems to be no use of a fixed click track.<br><br> Structurally, the tracks on this album are either built around one or two riffs like a jam session, or around an evolving structure that builds ups over the course of the track, which is less repetitive, using clear transitions between parts.<br><br> Concluding, this album contains tracks evolving structures that build to the climax, and tracks that are centered around a central idea, like a jam session.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

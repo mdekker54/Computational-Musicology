@@ -33,32 +33,23 @@ knitr::opts_chunk$set(echo = TRUE)
 ::: {.card}
 
 <div style="font-family:nunito; font-size:15px !important;">
-Explore the sonic world of *All Them Witches* through a full analysis of their six studio albums. This project explores the evolution of the band's sound, from their early blues-inspired rock tracks, to more complex, psychedelic compositions.
+This github page is used to analyze the musical evolution of an American-based rock band called *All Them Witches*, known for their fusion of hard rock, blues and psychedelic music, mixing mellow acoustic passages, hypnotic instrumental sections and fiery fuzz-driven riffs. Every album has its own identity, but what differences lie between these albums, and how has *All Them Witches* evolved to be the band they are today?
 </div>
 
 :::
 
 
-### Row {height=65% .tabset}
+### Row
 
-::: {.card title="History"}
+::: {.card title="Band Information"}
 
 <div style="font-family:nunito; font-size:15px !important;">
 *All Them Witches* formed in 2012 in Nashville when drummer Robby Staebler recruited guitarist Ben McLeod, keyboardist Allan Van Cleave, and bassist/vocalist Charles Michael Parks Jr. That year, they self-released their first EP and debut album, *Our Mother Electricity*, which was later reissued by the German label Elektrohasch Records. In 2013, they self-released their second album, *Lightning at the Door*, before signing with New West Records in 2015. Under New West, the band released four albums, along with reissues of earlier albums.
 
-Over the years, the band has seen minor lineup changes, including keyboardist Allan Van Cleave’s brief departure and eventual return. They have toured extensively across North America and Europe, steadily building their catalog and professional profile. Through independent releases, label partnerships, and consistent touring, All Them Witches have maintained an active presence in the modern rock scene since their formation.
+Over the years, the band has seen minor lineup changes, including keyboardist Allan Van Cleave’s brief departure and eventual return. They have toured extensively across North America and Europe. Through independent releases, label partnerships, and consistent touring, *All Them Witches* have maintained an active presence in the modern rock scene since their formation.
 </div>
 
 :::
-
-::: {.card title="Style"}
-
-<div style="font-family:nunito; font-size:15px !important;">
-*All Them Witches* blend psychedelic rock, blues, and stoner elements with hypnotic, atmospheric textures. Their music shifts seamlessly between fuzz-heavy, driving riffs and more mellow, acoustic passages, creating a dynamic and immersive sound. Recurring motifs, haunting melodies, and layered arrangements give the band a distinctive sonic identity that evolves across their discography.
-</div>
-
-:::
-
 
 
 ## Column
@@ -210,107 +201,14 @@ Track list:<br>
 </p>
 
 :::
-# homework 
 
-### Row {height=100%}
+# Methods
 
-::: {.card title="Homework week 11"}
-Shown on the right side is a dft tempogram of a track called 41 from the album Nothing as the Ideal by All Them Witches. This track is mostly stated to be around 120 bpm by multiple online sources. What's interesting about this song is the fact that the drums play a half-time feel, meaning the kick is played on the 1 of the beat and the snare on the 3. While the drum is playing half-time, the guitar and bass are playing eighth notes. This lead me to think that sonic visualiser would have problems analysing this piece of music. some value around 120 is visible in the plot, but the double value is far more noticeable. This makes me think that the bass and guitar parts are tracked by sonic visualiser to generate a bpm. 
-:::
+Tools used:<br>
+- Sonic Visualizer - transforming data<br>
+- RStudio - coding<br>
+- Chatgpt - coding (layout) help and inspiration<br><br>
 
-## Column
-
-### Row {height=100%}
-
-::: {.card title=}
-```{r plot-chunk, echo=FALSE}
-#| title: All them witches - 41 DFT
-fourtyonedft |> 
-  pivot_longer(-TIME, names_to = "tempo") |> 
-  mutate(tempo = as.numeric(tempo)) |> 
-  ggplot(aes(x = TIME, y = tempo, fill = value)) +
-  geom_raster() +
-  scale_fill_viridis_c(guide = "none") +
-  labs(x = "Time (s)", y = "Tempo (BPM)") +
-  theme_classic()
-```
-:::
-
-
-
-
-## Column {width=50%}
-
-### Row
-
-::: {card}
-```{r, echo=FALSE}
-alltracks_juice <-
-  recipe(
-    `Track Name` ~
-      Danceability +
-      Energy +
-      Loudness +
-      Speechiness +
-      Acousticness +
-      Instrumentalness +
-      Liveness +
-      Valence +
-      Tempo +
-      `Duration (ms)`,
-    data = alltracks
-  ) |>
-  step_center(all_predictors()) |>
-  step_scale(all_predictors()) |> 
-  prep(alltracks |> mutate(`Track Name` = str_trunc(`Track Name`, 36))) |>
-  juice() |>
-  column_to_rownames("Track Name")
-```
-```{r, echo=FALSE}
-alltracks_dist <- dist(alltracks_juice, method = "euclidean")
-```
-```{r, echo=FALSE}
-alltracks_dist |> 
-  hclust(method = "complete") |> # Try single, average, and complete.
-  dendro_data() |>
-  ggdendrogram()
-```
-:::
-
-::: {card}
-
-```{r, echo=FALSE}
-alltracks2_juice <-
-  recipe(
-    `Track Name` ~
-      Energy +
-      Loudness,
-    data = alltracks
-  ) |>
-  step_center(all_predictors()) |>
-  step_scale(all_predictors()) |> 
-  prep(alltracks |> mutate(`Track Name` = str_trunc(`Track Name`, 36))) |>
-  juice() |>
-  column_to_rownames("Track Name")
-```
-```{r, echo=FALSE}
-alltracks2_dist <- dist(alltracks2_juice, method = "euclidean")
-```
-```{r, echo=FALSE}
-alltracks2_dist |> 
-  hclust(method = "complete") |> # Try single, average, and complete.
-  dendro_data() |>
-  ggdendrogram()
-```
-
-:::
-
-## Column
-
-### Row {height=50%}
-
-The first dendrogram to the left is made up of all songs used in the corpus. All variables as extracted from exportify are used. These are: danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence and tempo. The clusters seem to make sense to some extent. clusters like the 2nd, 3rd, 4th, 5th and 6th track are quite similar in ways. They are all higher energy, mostly distorted sounding tracks. These kind of variables can be clustered even better.
-
-### Row{height=50%}
-
-The second dendrogram is also made up of all songs used in the corpus, but this time only energy and loudness are used. This makes the clusters as seen in the dendrogram to be more specific and therefore more logical to read and it is easier to make conclusions while listening. The interesting part about this dendogram is the fact that all clusters seem to have tracks from different albums, concluding that, with only these dendrograms, there is no reason to believe that the albums differ in energy and loudness level.
+On every plot, when needed,  the normalisation Euclidean was used, because this gave the clearest results.<br>
+On the hierarchal clustering trees the linkage Complete was used, because this gave the clearest and most logical results.<br>
+The Self-Similarity Matrices are pushed as images because of rendering times, but the code is present, directly underneath the image in the chunk.

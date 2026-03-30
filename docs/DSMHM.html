@@ -208,9 +208,14 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Each album analysis page has the exact same layout, that is:<br> - Album Information<br> - Metadata<br> - Clustering<br> - Harmony<br> - Tempo<br> - Timbre<br> - Structure<br> - Conclusion<br><br></p>
+<section id="album-information" class="level3">
+<h3 class="anchored" data-anchor-id="album-information">Album Information</h3>
 <p>Released by New West Records on 30-10-2015 <br> Genres according to database MusicBrainz<br> - Rock<br><br> Producer: Andy Putnam and All Them Witches<br> Songwriting credits:<br> - Charles Michael Parks Jr.&nbsp;- Vocals, Bass guitar, Electric Guitar and Acoustic Guitar<br> - Allan Van Cleave - Rhodes Piano, Violin and Synthesizer Bass<br> - Ben McLeod - Electric Guitar, Slide Guitar, Acoustic Guitar and Synthesizer Bass<br> - Robby Staebler - Drums<br> <br> Additional credits on Track 4:<br> - Mickey Raphael - Harmonica<br></p>
+</section>
 <section id="metadata" class="level3">
 <h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<p>This album features 9 tracks, with an average duration of 5 minutes and 3 seconds. The track list below shows the length of each track in minutes.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -220,6 +225,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>The average tempo of this album is 120bpm with a minimum of 70bpm and a maximum of 171bpm. The track list below shows the tempo of each track in bpm.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -231,8 +237,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 </section>
-<section id="clustering-and-classification" class="level1">
-<h1>Clustering and Classification</h1>
+<section id="clustering" class="level2">
+<h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
+<p>To analyze six albums within the scope of this course, clustering is used to select two representative tracks per album for deeper analysis. A hierarchical clustering tree is shown below, based on the following variables: danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration, and time signature. Popularity is excluded, as it does not reflect the audio characteristics of the tracks. From each of the two primary clusters, the most streamed track is selected.<br><br> Although there are only two tracks in cluster one the resulting clusters reflect distinct musical characteristics. The tracks in cluster one are heavy-hitting tracks with high energy and mostly distorted sounds. Cluster two, on the other hand, consists mostly of mellow, bittersweet-sounding folk tracks, with calm vocals and clean/acoustic guitars. The most streamed track in cluster one is <em>Dirt Preachers</em> and the most streamed track in cluster two is <em>Open Passageways</em>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -242,7 +249,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Dirt Preachers<br> Open Passageways ## Harmony</p>
+</section>
+<section id="harmony" class="level2">
+<h2 class="anchored" data-anchor-id="harmony">Harmony</h2>
+<p>Chromagram - <em>Dirt Preachers</em><br><br> As seen in the plot below, this track starts out with a dominant A pitch. Around 35, 50, 85 and 100 seconds, the dominant A changes to a dominant Bb, which is caused by a part of the chorus in which the Bb parts is played for an extended amount of time. After approximately 110 seconds, the track has a change of feel, along with different chord timing. The switching between chords becomes less frequent, resulting in wider stripes in the chromagram.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -252,6 +262,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Chromagram - <em>Open Passageways</em><br><br> As seen in the plot below, this track has a dominant A pitch, along with its fifth, the E. There is little noise in the plot, as there is mostly acoustic instruments playing, with little effects involved. The first ten seconds are especially noiseless, as the drums are added in after the first ten seconds.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -261,6 +272,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Keygram - <em>Dirt Preachers</em><br><br> As mentioned earlier, the most dominant pitch of this track up to the change of feel and timing is the A. In the keygram below, there is a clear difference between the first half and second half of the track, though the Amaj key seems to be the most evident throughout the song.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -270,6 +282,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Keygram - <em>Open Passageways</em><br><br> As mentioned earlier, the most dominant pitch of this track is the A, along with its fifth, the E. This keygram shows blue stripes through the Amaj and Amin, with the minor tonality a bit more evident.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -279,6 +292,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="tempo" class="level2">
+<h2 class="anchored" data-anchor-id="tempo">Tempo</h2>
+<p>Tempogram - <em>Dirt Preachers</em><br><br> The tempogram below shows that the high energy parts of this track are too hard to be tracked, but it is evident that the tempo slows down throughout the whole track, making it probable that there was no fixed click track used at the recording of this track.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -288,6 +305,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Tempogram - <em>Open Passageways</em><br><br> The tempogram below shows that only the intro of this track was able to be tracked. This is probably caused by the violin that is added from 55 seconds and onwards, making it harder to find the energy differences made by the rest of the other instruments.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -297,8 +315,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<section id="rhythm-and-tempo" class="level2">
-<h2 class="anchored" data-anchor-id="rhythm-and-tempo">Rhythm and Tempo</h2>
+</section>
+<section id="timbre" class="level2">
+<h2 class="anchored" data-anchor-id="timbre">Timbre</h2>
+<p>Cepstogram - <em>Dirt Preachers</em><br><br> The Cepstogram below shows that this track evolves in a way. The yellow stripe gets brighter and brighter, which is caused by the use of more distorted guitar sounds near the end of the track, after the slow and clean part between 110 and 170 seconds.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -308,6 +328,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Cepstogram - <em>Open Passageways</em><br><br> The Cepstogram below shows that this is a really consistent track when speaking about timbre features, apart from the silence in the outro of the track.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -318,50 +339,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="timbre" class="level2">
-<h2 class="anchored" data-anchor-id="timbre">Timbre</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DSMHM_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DSMHM_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section id="structure" class="level2">
 <h2 class="anchored" data-anchor-id="structure">Structure</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DSMHM_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DSMHM_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-
-
+<p>Self-Similarity Matrix - <em>Dirt Preachers</em><br><br> This matrix shows that this track has a long repetitive second half, which consists of a long guitar solo. The green cross at 25 seconds is the first chorus, the green cross at 80 seconds is the second chorus and the bright cross at 110 is a short silence before the beginning of a verse.</p>
+<p><img src="Images/dirtssm.png" class="img-fluid"></p>
+<p>Self-Similarity Matrix - <em>Open Passageways</em><br><br> This track is really repetitive, making the most subtle variations bright green in this matrix. The narrow bright green crosses are guitar fills. The vague green bars are the pre-choruses, with one at around 40 until 50 seconds and one at around 130 until 140 seconds.</p>
+<p><img src="Images/passagewaysssm.png" class="img-fluid"></p>
 </section>
+<section id="conlusion---dying-surfer-meets-his-maker" class="level2">
+<h2 class="anchored" data-anchor-id="conlusion---dying-surfer-meets-his-maker">Conlusion - <em>Dying Surfer Meets His Maker</em></h2>
+<p>Overall, this album provides a clear distinction between high energy, distorted tracks and soft acoustic folk tracks. The hierarchical clustering seperates these groups.<br><br> Both representative tracks are centered around the pitch A, but both very differently. <em>Dirt Preachers</em> shifts and changes a lot, while <em>Open Passageways</em> stays harmonically stable, using the most of the A and its fifth, the E.<br><br> Both tracks give significant reason to believe that there was no click track at the recording, making them feel organic and live.<br><br> Both tracks are clearly organized. <em>Dirt Preachers</em> goes through an evolving structure, transitioning at the middle of the track, while <em>Open Passageways</em> uses repetition.<br><br> Concluding, this album blends evolving high energy rock tracks with minimalistic folk tracks, resulting in a diverse yet coherent album.</p>
+
+
 </section>
 
 </main> <!-- /main -->

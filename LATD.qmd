@@ -22,6 +22,16 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Introduction
 
+Each album analysis page has the exact same layout, that is:<br>
+- Album Information<br>
+- Metadata<br>
+- Clustering<br>
+- Harmony<br>
+- Tempo<br>
+- Timbre<br>
+- Structure<br>
+- Conclusion<br><br>
+
 ### Album Information
 
 Self-released on 5-11-2013<br>
@@ -44,7 +54,7 @@ Additional credits on Track 1 and 3:<br>
 
 ### Metadata
 
-..
+This album features 10 tracks, with an average duration of 5 minutes and 34 seconds. The track list below shows the length of each track in minutes.
 
 
 ```{r}
@@ -80,6 +90,9 @@ ggplot(latd_df, aes(x = duration_min, y = forcats::fct_rev(`Track Name`))) +
   theme_minimal() +
   xlim(0, max(latd_df$duration_min) * 1.1)
 ```
+
+The average tempo of this album is 135bpm with a minimum of 88bpm and a maximum of 167bpm. The track list below shows the tempo of each track in bpm.
+
 ```{r}
 alltracks %>%
   filter(`Album Name` == "Lightning At The Door") %>%
@@ -97,7 +110,10 @@ alltracks %>%
   theme_minimal()
 ```
 
-## Clustering and Classification
+## Clustering
+
+To analyze six albums within the scope of this course, clustering is used to select two representative tracks per album for deeper analysis. A hierarchical clustering tree is shown below, based on the following variables: danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration, and time signature. Popularity is excluded, as it does not reflect the audio characteristics of the tracks. From each of the two primary clusters, the most streamed track is selected.<br><br>
+The resulting clusters reflect distinct musical characteristics. The tracks in cluster one are mostly hypnotically repetitive and tracks, with consistent energy throughout the track and a clear pulse. Cluster two, on the other hand, consists mostly of groove-heavy tracks with little vocals and big energy and loudness differences between parts of the tracks. The most streamed track in cluster one is *When God Comes Back* and the most streamed track in cluster two is *The Marriage Of Coyote Woman*.
 
 ```{r}
 latd_juice <-
@@ -129,9 +145,11 @@ latd_dist |>
   dendro_data() |>
   ggdendrogram()
 ```
-When God Comes Back<br>
-The Marriage Of Coyote Woman
+
 ## Harmony
+
+Chromagram - *When God Comes Back*<br><br>
+As seen in the plot below, the most dominant pitches in this track are the C and G for the first half, but shift to the D and Bb, along with the C# and A, until almost the end of the track, as a result of a long bridge. 
 
 ```{r}
 god <- read_csv("dat/god.csv")
@@ -154,6 +172,8 @@ god |>
   scale_fill_viridis_c()
 ```
 
+Chromagram - *The Marriage Of Coyote Woman*<br><br>
+As seen in the plot below, The most dominant pitches of this track are the A, F, C and most importantly D, as this pitch is the most lightly colored. This track seems to be quite repetitive, apart from the ending, which is the result of a silence of approximately ten seconds.
 ```{r}
 marriage <- read_csv("dat/marriage.csv")
 
@@ -262,6 +282,10 @@ key_templates <-
     "D#:min", circshift(minor_key, 3)
   )
 ```
+
+Keygram - *When God Comes Back*<br><br>
+As mentioned earlier, the most dominant pitch of this track up to the bridge is the C, along with the G. There is no difference to be seen between the minor and major tonalities of the C. The bridge of the track is visible, with the Dmin slightly darker colored, and therefore, more prominent than other tonalities.
+
 ```{r}
 god |> 
   compmus_wrangle_chroma() |> 
@@ -280,6 +304,9 @@ god |>
   labs(x = "Time (s)", y = "")
 ```
 
+Keygram - *The Marriage Of Coyote Woman*<br><br>
+As mentioned earlier, the most dominant pitches of this track are A, F, C and most importantly D. This keygram shows no reason to believe this track is either written in Dmin or Dmaj. The thing that is evident, is that this track ends in a G, instead of a D,like you would expect.
+
 ```{r}
 marriage |> 
   compmus_wrangle_chroma() |> 
@@ -297,42 +324,12 @@ marriage |>
   theme_minimal() +
   labs(x = "Time (s)", y = "")
 ```
-```{r}
-god |> 
-  compmus_wrangle_chroma() |> 
-  filter(row_number() %% 50L == 0L) |> 
-  compmus_match_pitch_template(
-    chord_templates,         # Change to chord_templates if desired
-    method = "euclidean",  # Try different distance metrics
-    norm = "manhattan"     # Try different norms
-  ) |>
-  ggplot(
-    aes(x = start + duration / 2, width = 50 * duration, y = name, fill = d)
-  ) +
-  geom_tile() +
-  scale_fill_viridis_c(guide = "none") +
-  theme_minimal() +
-  labs(x = "Time (s)", y = "")
-```
-```{r}
-marriage |> 
-  compmus_wrangle_chroma() |> 
-  filter(row_number() %% 50L == 0L) |> 
-  compmus_match_pitch_template(
-    chord_templates,         # Change to chord_templates if desired
-    method = "euclidean",  # Try different distance metrics
-    norm = "manhattan"     # Try different norms
-  ) |>
-  ggplot(
-    aes(x = start + duration / 2, width = 50 * duration, y = name, fill = d)
-  ) +
-  geom_tile() +
-  scale_fill_viridis_c(guide = "none") +
-  theme_minimal() +
-  labs(x = "Time (s)", y = "")
-```
 
-## Rhythm and Tempo
+
+## Tempo
+
+Tempogram - *When God Comes Back*<br><br>
+The tempogram below shows that the tempo of the bridge of this track is hard to be tracked, but it is evident that it slows down, because the lines of the tempo subharmonics at the bridge are significantly lower than the tempo subharmonics at other parts of the track.
 
 ```{r}
 godtempo <- read_csv("dat/godtempo.csv")
@@ -347,6 +344,10 @@ godtempo |>
   labs(x = "Time (s)", y = "Tempo (BPM)") +
   theme_classic()
 ```
+
+Tempogram - *The Marriage Of Coyote Woman*<br><br>
+The tempogram below shows that this track is fluctuating throughout the track, which probably means that there was no fixed click track at the recording of this track.
+
 ```{r}
 marriagetempo <- read_csv("dat/marriagetempo.csv")
 
@@ -362,6 +363,9 @@ marriagetempo |>
 ```
 
 ## Timbre
+
+Cepstogram - *When God Comes Back*<br><br>
+The Cepstogram below shows spikes at 0, 30, 60 and 200, which are caused by a sudden mute of all instruments with only vocals playing. The bridge is also visible as an extra bright yellow bar from 90 seconds until 125 seconds, where it gets quiet, making a vertical stripe, until 150 seconds.
 
 ```{r}
 godmel <- read_csv("dat/godmel.csv")
@@ -383,6 +387,9 @@ godmel |>
   scale_fill_viridis_c() +                              
   theme_classic()
 ```
+
+Cepstogram - *The Marriage Of Coyote Woman*<br><br>
+The Cepstogram below shows that this track is really consistent when speaking of timbre, apart from the almost silent intro and outro.
 
 ```{r}
 marriagemel <- read_csv("dat/marriagemel.csv")
@@ -407,7 +414,11 @@ marriagemel |>
 
 ## Structure
 
-```{r}
+Self-Similarity Matrix - *When God Comes Back*<br><br>
+This matrix provides a really clear structure, with green crosses at the parts where the instruments are silent and only vocals can be heard. The big blue block in the middle is caused by the repetitive instrumental bridge section.
+
+![](Images/godssm.png)
+```{r, eval=FALSE}
 godmel |>
   compmus_wrangle_timbre() |> 
   filter(row_number() %% 50L == 0L) |> 
@@ -429,7 +440,11 @@ godmel |>
   labs(x = "", y = "")
 ```
 
-```{r}
+Self-Similarity Matrix - *The Marriage Of Coyote Woman*<br><br>
+This matrix show a green cross right through the middle of the track, which is caused by a guitar solo section. The outro is silent, which results in the grrn stripe at the top and right.
+
+![](Images/marriagessm.png)
+```{r, eval=FALSE}
 marriagemel |>
   compmus_wrangle_timbre() |> 
   filter(row_number() %% 50L == 0L) |> 
@@ -451,3 +466,9 @@ marriagemel |>
   labs(x = "", y = "")
 ```
 
+## Conlusion - *Lightning At The Door*
+
+Overall, this is a cohesive, groove-oriented album. The hierarchical clustering shows two primary track groups: The first contains tracks with hypnotic repetitive structures with a clear pulse, and the other contains mostly instrumental, groove-heavy tracks with big shifts in energy, resulting in a rhythmic album containing tracks using musical evolution over vocal-driven styles.<br><br>
+The tempo is stable, but organic. No extreme fluctuations, no fixed click track. Only subtle expressive changes<br><br>
+Sections are clearly organized, though in different ways. *When God Comes Back* is clearly structured, breaking up the repetition with a bridge where you would expect it. *The Marriage Of Coyote Woman* on the other hand, is less segmented, more repetition-based, with the use of a solo section to break it up.<br><br>
+Concluding, this album prioritizes groove and repetition, with some deviations that provide contrast. Subtle variation is the key in the atmospheric sound.
